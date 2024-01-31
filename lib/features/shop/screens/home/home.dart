@@ -85,7 +85,10 @@ class HomeScreen extends StatelessWidget {
                     itemBuilder: (context, int) => const XProductCardVertical(),
                   ),
                   const XProductCardVertical(),
-                  const Text(""),
+                  Text(
+                    "",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
                 ],
               ),
             ),
