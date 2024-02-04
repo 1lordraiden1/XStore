@@ -20,10 +20,11 @@ class XImages {
 
   // Brands
 
-  static const String clothes = "assets/images/icons/brands/clothes.jpg";
+  static const String clothes = "assets/icons/brands/clothes.jpg"; //
 
   // Promos
 
   static const String space = "assets/promos/promo.jpeg";
   static const String space1 = "assets/promos/promo1.jpeg";
+  static const String yasuo = "assets/promos/yasuo.jpeg"; 
 }

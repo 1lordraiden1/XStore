@@ -17,11 +17,10 @@ class XProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = XHelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () {
-        
-      },
+      onTap: () {},
       child: Container(
-        width: 180,
+        //width: 180,
+        height: 180,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
           boxShadow: [XShadowStyle.verticalProductShadow],
@@ -31,18 +30,21 @@ class XProductCardVertical extends StatelessWidget {
         child: Column(
           children: [
             // Thumnail, Buttons and Tags
-    
+
             XRoundedContainer(
               height: 180,
               padding: const EdgeInsets.all(XSizes.sm),
               backgroundColor: dark ? XColors.dark : XColors.light,
               child: Stack(
                 children: [
-                  const XRoundedImage(imageUrl: XImages.clothes),
-    
+                  const XRoundedImage(
+                    imageUrl: XImages.google,
+                  ),
+
                   // Tag
-    
+
                   Positioned(
+                    top: 5,
                     child: XRoundedContainer(
                       radius: XSizes.sm,
                       backgroundColor: XColors.secondary.withOpacity(0.8),
@@ -58,9 +60,9 @@ class XProductCardVertical extends StatelessWidget {
                       ),
                     ),
                   ),
-    
+
                   // Fav Button
-    
+
                   const Positioned(
                     top: 0,
                     right: 0,
@@ -72,19 +74,19 @@ class XProductCardVertical extends StatelessWidget {
                 ],
               ),
             ),
-    
+
             const SizedBox(
               height: XSizes.spaceBtwItems / 2,
             ),
-    
+
             // Details
-    
+
             Padding(
               padding: const EdgeInsets.all(XSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  XProductTitleText(
+                  const XProductTitleText(
                     title: "White T-Shirt",
                     smallSize: true,
                   ),
@@ -108,41 +110,42 @@ class XProductCardVertical extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '\$49.99',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: XColors.dark,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(XSizes.cardRadiusMd),
-                            bottomRight: Radius.circular(
-                              XSizes.productImageRadius,
-                            ),
-                          ),
-                        ),
-                        child: const SizedBox(
-                          width: XSizes.iconLg * 1.2,
-                          height: XSizes.iconLg * 1.2,
-                          child: Center(
-                            child: Icon(
-                              Iconsax.add,
-                              color: XColors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
+            ),
+
+            const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  '\$49.99',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    color: XColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(XSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(
+                        XSizes.productImageRadius,
+                      ),
+                    ),
+                  ),
+                  child: const SizedBox(
+                    width: XSizes.iconLg * 1.2,
+                    height: XSizes.iconLg * 1.2,
+                    child: Center(
+                      child: Icon(
+                        Iconsax.add,
+                        color: XColors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

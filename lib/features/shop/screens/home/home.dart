@@ -70,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   const XPromoSlider(
                     banners: [
-                      XImages.clothes,
+                      XImages.yasuo,
                       XImages.space,
                       XImages.space1,
                     ],
@@ -78,16 +78,27 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: XSizes.spaceBtwSections,
                   ),
+                  const XSectionHeading(
+                    showActionButton: true,
+                    title: "Popular products",
+                  ),
+                  const SizedBox(
+                    height: XSizes.spaceBtwSections,
+                  ),
                   GridView.builder(
+                    itemCount: 4,
+                    shrinkWrap: true,
+                    padding: EdgeInsets.zero,
+                    physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2),
-                    itemBuilder: (context, int) => const XProductCardVertical(),
-                  ),
-                  const XProductCardVertical(),
-                  Text(
-                    "",
-                    style: Theme.of(context).textTheme.bodyLarge,
+                      crossAxisCount: 2,
+                      mainAxisSpacing: XSizes.gridViewSpacing,
+                      crossAxisSpacing: XSizes.gridViewSpacing,
+                      mainAxisExtent: 310,
+                      //childAspectRatio: 2,
+                    ),
+                    itemBuilder: (_, index) => const XProductCardVertical(),
                   ),
                 ],
               ),
