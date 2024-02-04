@@ -25,7 +25,8 @@ class OnBoardingController {
   }
 
   void skipPage() {
-    currentPageIndex.value = 2;
-    pageController.jumpToPage(2);
+    //currentPageIndex.value = 2;
+    //pageController.jumpToPage(2);
+    Get.offAll(const LoginScreen());
   }
 }
