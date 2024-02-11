@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
 class XRoundedImage extends StatelessWidget {
@@ -10,7 +9,7 @@ class XRoundedImage extends StatelessWidget {
     required this.imageUrl,
     this.applyImageRadius = true,
     this.border,
-    this.backgroundColor = XColors.light,
+    this.backgroundColor,
     this.fit = BoxFit.contain,
     this.isNetworkImage = false,
     this.onPressed,
@@ -24,7 +23,7 @@ class XRoundedImage extends StatelessWidget {
   final String imageUrl;
   final bool applyImageRadius;
   final BoxBorder? border;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final BoxFit? fit;
   final bool isNetworkImage;
   final VoidCallback? onPressed;
