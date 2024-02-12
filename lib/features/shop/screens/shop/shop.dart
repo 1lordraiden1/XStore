@@ -5,6 +5,7 @@ import 'package:xstore/common/widgets/icons/brand_title_icon.dart';
 import 'package:xstore/common/widgets/images/circular_image.dart';
 import 'package:xstore/common/widgets/shapes/containers/rounded_container.dart';
 import 'package:xstore/common/widgets/shapes/containers/search_container.dart';
+import 'package:xstore/common/widgets/tabbar/tabbar.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/features/shop/screens/home/home.dart';
 import 'package:xstore/features/shop/screens/home/widgets/cart_count.dart';
@@ -19,47 +20,49 @@ class ShopScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = XHelperFunctions.isDarkMode(context);
-    return Scaffold(
-      appBar: XAppBar(
-        title: Text(
-          "Store",
-          style: Theme.of(context).textTheme.headlineMedium,
+    return DefaultTabController(
+      length: 5,
+      child: Scaffold(
+        appBar: XAppBar(
+          title: Text(
+            "Store",
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
+          actions: [
+            XCartCountWidget(onPressed: () {}),
+          ],
         ),
-        actions: [
-          XCartCountWidget(onPressed: () {}),
-        ],
-      ),
-      body: NestedScrollView(
-        headerSliverBuilder: (_, innerBoxIsScrolled) {
-          return [
-            SliverAppBar(
-              automaticallyImplyLeading: false,
-              pinned: true, // pinning the appbar in the top
-              floating: true, // floats the appbar and disapper the details
-              backgroundColor: dark ? XColors.black : XColors.white,
-              expandedHeight: 450,
+        body: NestedScrollView(
+          headerSliverBuilder: (_, innerBoxIsScrolled) {
+            return [
+              SliverAppBar(
+                automaticallyImplyLeading: false,
+                pinned: true, // pinning the appbar in the top
+                floating: true, // floats the appbar and disapper the details
+                backgroundColor: dark ? XColors.black : XColors.white,
+                expandedHeight: 450,
 
-              flexibleSpace: Padding(
-                padding: const EdgeInsets.all(XSizes.defaultSpace),
-                child: ListView(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: [
-                    SizedBox(
-                      height: XSizes.spaceBtwItems,
-                    ),
-                    XSearchContainer(
-                      text: "Search here",
-                      icon: Iconsax.search_normal,
-                    ),
-                    SizedBox(
-                      height: XSizes.spaceBtwSections,
-                    ),
-                    XSectionHeading(title: "Featured Items"),
-                    SizedBox(
-                      height: XSizes.spaceBtwSections,
-                    ),
-                    XGridLayout(
+                flexibleSpace: Padding(
+                  padding: const EdgeInsets.all(XSizes.defaultSpace),
+                  child: ListView(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      SizedBox(
+                        height: XSizes.spaceBtwItems,
+                      ),
+                      XSearchContainer(
+                        text: "Search here",
+                        icon: Iconsax.search_normal,
+                      ),
+                      SizedBox(
+                        height: XSizes.spaceBtwSections,
+                      ),
+                      XSectionHeading(title: "Featured Items"),
+                      SizedBox(
+                        height: XSizes.spaceBtwSections,
+                      ),
+                      XGridLayout(
                         itemCount: 2,
                         mainAxisExtent: 80,
                         itemBuilder: (_, index) {
@@ -104,14 +107,25 @@ class ShopScreen extends StatelessWidget {
                               ),
                             ),
                           );
-                        })
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                bottom: XTabbar(
+                  tabs: [
+                    Text("Clothes"),
+                    Text("Clothes"),
+                    Text("Clothes"),
+                    Text("Clothes"),
+                    Text("Clothes"),
                   ],
                 ),
               ),
-            ),
-          ];
-        },
-        body: Container(),
+            ];
+          },
+          body: Container(),
+        ),
       ),
     );
   }
