@@ -11,7 +11,7 @@ class XTabbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final dark = XHelperFunctions.isDarkMode(context);
-    // TODO: implement build
+
     return Material(
       color: dark ? XColors.black : XColors.white,
       child: TabBar(

@@ -13,6 +13,7 @@ class XRoundedContainer extends StatelessWidget {
     this.child,
     this.margin,
     this.showBorder = false,
+    this.borderColor = XColors.borderPrimary,
   });
 
   final double? width;
@@ -21,7 +22,7 @@ class XRoundedContainer extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? padding;
 
-  final Color borderColor = XColors.borderPrimary;
+  final Color borderColor;
   final Color backgroundColor;
 
   final bool showBorder;

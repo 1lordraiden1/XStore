@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:xstore/common/widgets/appbar/appbar.dart';
+import 'package:xstore/common/widgets/brand/brand_card.dart';
+import 'package:xstore/common/widgets/brand/brand_showcase_card.dart';
 import 'package:xstore/common/widgets/icons/brand_title_icon.dart';
 import 'package:xstore/common/widgets/images/circular_image.dart';
 import 'package:xstore/common/widgets/shapes/containers/rounded_container.dart';
@@ -9,6 +11,7 @@ import 'package:xstore/common/widgets/tabbar/tabbar.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/features/shop/screens/home/home.dart';
 import 'package:xstore/features/shop/screens/home/widgets/cart_count.dart';
+import 'package:xstore/features/shop/screens/shop/widgets/category_tab.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
@@ -66,53 +69,15 @@ class ShopScreen extends StatelessWidget {
                         itemCount: 2,
                         mainAxisExtent: 80,
                         itemBuilder: (_, index) {
-                          return GestureDetector(
-                            onTap: () {},
-                            child: XRoundedContainer(
-                              padding: EdgeInsets.all(XSizes.sm),
-                              showBorder: true,
-                              backgroundColor: Colors.transparent,
-                              child: Row(
-                                children: [
-                                  Flexible(
-                                    child: XCircularImage(
-                                      image: XImages.facebook,
-                                      overlayColor:
-                                          dark ? XColors.white : XColors.black,
-                                      height: 56,
-                                      width: 56,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: XSizes.spaceBtwItems,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        XBrandTitleVerfiedIcon(
-                                            title: "FaceBook"),
-                                        Text(
-                                          "52 Products",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .labelMedium,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                          return const XBrandCard(
+                            showBorder: true,
                           );
                         },
                       ),
                     ],
                   ),
                 ),
-                bottom: XTabbar(
+                bottom: const XTabbar(
                   tabs: [
                     Text("Clothes"),
                     Text("Clothes"),
@@ -124,7 +89,15 @@ class ShopScreen extends StatelessWidget {
               ),
             ];
           },
-          body: Container(),
+          body: TabBarView(
+            children: [
+              XCategoryTab(),
+              XCategoryTab(),
+              XCategoryTab(),
+              XCategoryTab(),
+              XCategoryTab(),
+            ],
+          ),
         ),
       ),
     );
