@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:xstore/common/widgets/appbar/appbar.dart';
+import 'package:xstore/common/widgets/icons/brand_title_icon.dart';
+import 'package:xstore/common/widgets/images/circular_image.dart';
+import 'package:xstore/common/widgets/shapes/containers/rounded_container.dart';
 import 'package:xstore/common/widgets/shapes/containers/search_container.dart';
+import 'package:xstore/common/widgets/texts/text_heading.dart';
+import 'package:xstore/features/shop/screens/home/home.dart';
 import 'package:xstore/features/shop/screens/home/widgets/cart_count.dart';
 import 'package:xstore/utils/constants/colors.dart';
+import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 import 'package:xstore/utils/helpers/helper_functions.dart';
 
@@ -24,38 +30,89 @@ class ShopScreen extends StatelessWidget {
         ],
       ),
       body: NestedScrollView(
-          headerSliverBuilder: (_, innerBoxIsScrolled) {
-            return [
-              SliverAppBar(
-                automaticallyImplyLeading: false,
-                pinned: true, // pinning the appbar in the top
-                floating: true, // floats the appbar and disapper the details
-                backgroundColor: dark ? XColors.black : XColors.white,
-                expandedHeight: 450,
+        headerSliverBuilder: (_, innerBoxIsScrolled) {
+          return [
+            SliverAppBar(
+              automaticallyImplyLeading: false,
+              pinned: true, // pinning the appbar in the top
+              floating: true, // floats the appbar and disapper the details
+              backgroundColor: dark ? XColors.black : XColors.white,
+              expandedHeight: 450,
 
-                flexibleSpace: Padding(
-                  padding: const EdgeInsets.all(XSizes.defaultSpace),
-                  child: ListView(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    children: const [
-                      SizedBox(
-                        height: XSizes.spaceBtwItems,
-                      ),
-                      XSearchContainer(
-                        text: "Search here",
-                        icon: Iconsax.search_normal,
-                      ),
-                      SizedBox(
-                        height: XSizes.spaceBtwSections,
-                      ),
-                    ],
-                  ),
+              flexibleSpace: Padding(
+                padding: const EdgeInsets.all(XSizes.defaultSpace),
+                child: ListView(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: [
+                    SizedBox(
+                      height: XSizes.spaceBtwItems,
+                    ),
+                    XSearchContainer(
+                      text: "Search here",
+                      icon: Iconsax.search_normal,
+                    ),
+                    SizedBox(
+                      height: XSizes.spaceBtwSections,
+                    ),
+                    XSectionHeading(title: "Featured Items"),
+                    SizedBox(
+                      height: XSizes.spaceBtwSections,
+                    ),
+                    XGridLayout(
+                        itemCount: 2,
+                        mainAxisExtent: 80,
+                        itemBuilder: (_, index) {
+                          return GestureDetector(
+                            onTap: () {},
+                            child: XRoundedContainer(
+                              padding: EdgeInsets.all(XSizes.sm),
+                              showBorder: true,
+                              backgroundColor: Colors.transparent,
+                              child: Row(
+                                children: [
+                                  Flexible(
+                                    child: XCircularImage(
+                                      image: XImages.facebook,
+                                      overlayColor:
+                                          dark ? XColors.white : XColors.black,
+                                      height: 56,
+                                      width: 56,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: XSizes.spaceBtwItems,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        XBrandTitleVerfiedIcon(
+                                            title: "FaceBook"),
+                                        Text(
+                                          "52 Products",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .labelMedium,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        })
+                  ],
                 ),
               ),
-            ];
-          },
-          body: Container()),
+            ),
+          ];
+        },
+        body: Container(),
+      ),
     );
   }
 }

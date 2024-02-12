@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:xstore/common/widgets/icons/brand_title_icon.dart';
 import 'package:xstore/common/widgets/icons/circular_icon.dart';
 import 'package:xstore/common/widgets/shapes/containers/rounded_container.dart';
 import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';
@@ -82,34 +83,20 @@ class XProductCardVertical extends StatelessWidget {
 
             // Details
 
-            Padding(
+            const Padding(
               padding: const EdgeInsets.all(XSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const XProductTitleText(
+                  XProductTitleText(
                     title: "White T-Shirt",
                     smallSize: true,
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: XSizes.spaceBtwItems / 2,
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        "T-Shirts",
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                      const SizedBox(
-                        width: XSizes.xs,
-                      ),
-                      const Icon(
-                        Iconsax.verify5,
-                        color: XColors.primary,
-                        size: XSizes.iconXs,
-                      ),
-                    ],
+                  XBrandTitleVerfiedIcon(
+                    title: "T-Shirts",
                   ),
                 ],
               ),

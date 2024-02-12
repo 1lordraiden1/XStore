@@ -5,7 +5,7 @@ class XSectionHeading extends StatelessWidget {
   const XSectionHeading({
     super.key,
     this.textColor = XColors.white,
-    required this.showActionButton,
+    this.showActionButton = true,
     required this.title,
     this.buttonTitle = "View all",
     this.onPressed,
