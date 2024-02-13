@@ -28,7 +28,7 @@ class VerifyEmail extends StatelessWidget {
           child: Column(
             children: [
               // Image
-              Image(image: AssetImage(XImages.onBoardingImage3)),
+              const Image(image: AssetImage(XImages.onBoardingImage3)),
               const SizedBox(
                 height: XSizes.spaceBtwSections,
               ),

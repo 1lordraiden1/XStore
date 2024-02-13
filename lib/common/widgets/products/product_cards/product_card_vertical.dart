@@ -84,7 +84,7 @@ class XProductCardVertical extends StatelessWidget {
             // Details
 
             const Padding(
-              padding: const EdgeInsets.all(XSizes.sm),
+              padding: EdgeInsets.all(XSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

@@ -23,7 +23,7 @@ class XBrandCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: XRoundedContainer(
-        padding: EdgeInsets.all(XSizes.sm),
+        padding: const EdgeInsets.all(XSizes.sm),
         showBorder: showBorder,
         backgroundColor: Colors.transparent,
         child: Row(
@@ -36,7 +36,7 @@ class XBrandCard extends StatelessWidget {
                 width: 56,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: XSizes.spaceBtwItems,
             ),
             Expanded(
@@ -44,7 +44,7 @@ class XBrandCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  XBrandTitleVerfiedIcon(title: "FaceBook"),
+                  const XBrandTitleVerfiedIcon(title: "FaceBook"),
                   Text(
                     "52 Products",
                     style: Theme.of(context).textTheme.labelMedium,

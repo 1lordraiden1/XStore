@@ -9,7 +9,7 @@ class XVerticalImageText extends StatelessWidget {
     required this.image,
     required this.title,
     required this.textColor,
-    this.backgroundColor = XColors.white,
+    this.backgroundColor,
     this.onTap,
   });
 

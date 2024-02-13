@@ -19,7 +19,7 @@ class XCategoryTab extends StatelessWidget {
           padding: const EdgeInsets.all(XSizes.defaultSpace),
           child: Column(
             children: [
-              XBrandShowCase(
+              const XBrandShowCase(
                 images: [
                   XImages.yasuo,
                   XImages.darkAppLogo,
@@ -29,7 +29,7 @@ class XCategoryTab extends StatelessWidget {
               const SizedBox(
                 height: XSizes.spaceBtwItems,
               ),
-              XSectionHeading(title: "You May like"),
+              const XSectionHeading(title: "You May like"),
               const SizedBox(
                 height: XSizes.spaceBtwItems,
               ),

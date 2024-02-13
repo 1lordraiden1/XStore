@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:xstore/features/shop/screens/home/home.dart';
 import 'package:xstore/features/shop/screens/shop/shop.dart';
+import 'package:xstore/features/shop/screens/wishlist/wishlist.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/helpers/helper_functions.dart';
 
@@ -48,9 +48,7 @@ class NavigationController extends GetxController {
   final screens = [
     const HomeScreen(),
     const ShopScreen(),
-    Container(
-      color: Colors.green,
-    ),
+    const FavoriteScreen(),
     Container(
       color: Colors.cyan,
     ),
