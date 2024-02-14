@@ -4,8 +4,8 @@ import 'package:xstore/utils/constants/colors.dart';
 class XSectionHeading extends StatelessWidget {
   const XSectionHeading({
     super.key,
-    this.textColor = XColors.white,
-    this.showActionButton = true,
+    this.textColor,
+    this.showActionButton = false,
     required this.title,
     this.buttonTitle = "View all",
     this.onPressed,

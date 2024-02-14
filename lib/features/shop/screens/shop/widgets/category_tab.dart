@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xstore/common/widgets/brand/brand_showcase_card.dart';
+import 'package:xstore/common/widgets/grid/grid_layout.dart';
 import 'package:xstore/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/features/shop/screens/home/home.dart';

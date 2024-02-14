@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:xstore/common/widgets/appbar/appbar.dart';
 import 'package:xstore/common/widgets/brand/brand_card.dart';
+import 'package:xstore/common/widgets/grid/grid_layout.dart';
 import 'package:xstore/common/widgets/shapes/containers/search_container.dart';
 import 'package:xstore/common/widgets/tabbar/tabbar.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';

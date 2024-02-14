@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:xstore/common/widgets/grid/grid_layout.dart';
 import 'package:xstore/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:xstore/common/widgets/shapes/containers/primary_header_container.dart';
 import 'package:xstore/common/widgets/shapes/containers/search_container.dart';
@@ -25,6 +26,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   // AppBar
                   XHomeAppBarWidget(),
+
                   SizedBox(
                     height: XSizes.spaceBtwSections,
                   ),
@@ -53,6 +55,9 @@ class HomeScreen extends StatelessWidget {
                           height: XSizes.spaceBtwItems,
                         ),
                         XHomeCategories(),
+                        const SizedBox(
+                          height: XSizes.spaceBtwSections,
+                        ),
                       ],
                     ),
                   ),
@@ -95,37 +100,6 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class XGridLayout extends StatelessWidget {
-  const XGridLayout({
-    super.key,
-    required this.itemCount,
-    this.mainAxisExtent = 310,
-    required this.itemBuilder,
-  });
-
-  final int itemCount;
-  final double? mainAxisExtent;
-  final Widget? Function(BuildContext, int) itemBuilder;
-
-  @override
-  Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: itemCount,
-      shrinkWrap: true,
-      padding: EdgeInsets.zero,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: XSizes.gridViewSpacing,
-        crossAxisSpacing: XSizes.gridViewSpacing,
-        mainAxisExtent: mainAxisExtent,
-        //childAspectRatio: 2,
-      ),
-      itemBuilder: itemBuilder,
     );
   }
 }
