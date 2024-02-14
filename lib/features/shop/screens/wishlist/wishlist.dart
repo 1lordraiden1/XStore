@@ -30,7 +30,7 @@ class FavoriteScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(XSizes.defaultSpace),
+          padding: const EdgeInsets.all(XSizes.defaultSpace),
           child: Column(
             children: [
               XGridLayout(

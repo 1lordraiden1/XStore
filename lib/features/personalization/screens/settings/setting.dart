@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:xstore/common/widgets/appbar/appbar.dart';
-import 'package:xstore/common/widgets/icons/circular_icon.dart';
-import 'package:xstore/common/widgets/images/circular_image.dart';
 import 'package:xstore/common/widgets/shapes/containers/primary_header_container.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
+import 'package:xstore/common/widgets/tiles/setting_tile.dart';
 import 'package:xstore/common/widgets/tiles/user_tile.dart';
-import 'package:xstore/features/shop/screens/home/home.dart';
 import 'package:xstore/utils/constants/colors.dart';
-import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -31,14 +27,6 @@ class SettingScreen extends StatelessWidget {
                             color: XColors.white,
                           ),
                     ),
-                    actions: [
-                      XCircularIcon(
-                        icon: Iconsax.add,
-                        onPressed: () => Get.to(
-                          const HomeScreen(),
-                        ),
-                      ),
-                    ],
                   ),
                   const XUserProfileTile(),
                   const SizedBox(
@@ -50,11 +38,85 @@ class SettingScreen extends StatelessWidget {
 
             // Body
 
-            const Padding(
-              padding: EdgeInsets.all(XSizes.defaultSpace),
+            Padding(
+              padding: const EdgeInsets.all(XSizes.defaultSpace),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  XSectionHeading(title: "Account Settings"),
+                  // Account Settings
+
+                  const XSectionHeading(title: "Account Settings"),
+                  const SizedBox(
+                    height: XSizes.spaceBtwItems,
+                  ),
+                  const XSettingMenuTile(
+                    icon: Iconsax.safe_home,
+                    title: "My Addresses",
+                    subtitle: "Set delivery address",
+                  ),
+                  const XSettingMenuTile(
+                    icon: Iconsax.shopping_cart,
+                    title: "My Cart",
+                    subtitle: "Add, remove and checkout",
+                  ),
+                  const XSettingMenuTile(
+                    icon: Iconsax.bag_tick,
+                    title: "My Orders",
+                    subtitle: "List of your Completed",
+                  ),
+                  const XSettingMenuTile(
+                    icon: Iconsax.bank,
+                    title: "Bank Account",
+                    subtitle: "Withdraw balance ..",
+                  ),
+                  const XSettingMenuTile(
+                    icon: Iconsax.discount_shape,
+                    title: "My Coupons",
+                    subtitle: "List of discounted Coupons",
+                  ),
+                  const XSettingMenuTile(
+                    icon: Iconsax.notification,
+                    title: "Notifications",
+                    subtitle: "Manage Notifications",
+                  ),
+                  const XSettingMenuTile(
+                    icon: Iconsax.security_card,
+                    title: "Account Privacy",
+                    subtitle: "Manage Data",
+                  ),
+
+                  // App settings
+
+                  const SizedBox(
+                    height: XSizes.spaceBtwSections,
+                  ),
+                  const XSectionHeading(title: "App Settings"),
+                  const SizedBox(
+                    height: XSizes.spaceBtwItems,
+                  ),
+                  const XSettingMenuTile(
+                    icon: Iconsax.document_upload,
+                    title: "Load Data",
+                    subtitle: "Upload data to Cloud",
+                  ),
+                  XSettingMenuTile(
+                    icon: Iconsax.location,
+                    title: "Location",
+                    subtitle: "Set recommended locations",
+                    trailing: Switch(value: true, onChanged: (value) {}),
+                  ),
+                  XSettingMenuTile(
+                    icon: Iconsax.security_user,
+                    title: "Safe Mode",
+                    subtitle: "Search results is safe",
+                    trailing: Switch(value: false, onChanged: (value) {}),
+                  ),
+                  XSettingMenuTile(
+                    icon: Iconsax.image,
+                    title: "HQ Image",
+                    subtitle: "Set image quality",
+                    trailing: Switch(value: true, onChanged: (value) {}),
+                  ),
                 ],
               ),
             ),

@@ -6,7 +6,6 @@ import 'package:xstore/common/widgets/grid/grid_layout.dart';
 import 'package:xstore/common/widgets/shapes/containers/search_container.dart';
 import 'package:xstore/common/widgets/tabbar/tabbar.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
-import 'package:xstore/features/shop/screens/home/home.dart';
 import 'package:xstore/features/shop/screens/home/widgets/cart_count.dart';
 import 'package:xstore/features/shop/screens/shop/widgets/category_tab.dart';
 import 'package:xstore/utils/constants/colors.dart';
