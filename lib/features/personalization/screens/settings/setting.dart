@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:xstore/common/widgets/appbar/appbar.dart';
 import 'package:xstore/common/widgets/shapes/containers/primary_header_container.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/common/widgets/tiles/setting_tile.dart';
 import 'package:xstore/common/widgets/tiles/user_tile.dart';
+import 'package:xstore/features/shop/screens/profile.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
@@ -28,7 +30,11 @@ class SettingScreen extends StatelessWidget {
                           ),
                     ),
                   ),
-                  const XUserProfileTile(),
+                  XUserProfileTile(
+                    onPressed: () => Get.to(
+                      const ProfileScreen(),
+                    ),
+                  ),
                   const SizedBox(
                     height: XSizes.spaceBtwSections + 2,
                   ),

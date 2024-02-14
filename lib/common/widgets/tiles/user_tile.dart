@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:xstore/common/widgets/images/circular_image.dart';
 import 'package:xstore/utils/constants/colors.dart';
@@ -7,11 +8,15 @@ import 'package:xstore/utils/constants/image_strings.dart';
 class XUserProfileTile extends StatelessWidget {
   const XUserProfileTile({
     super.key,
+    this.onPressed,
   });
+
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: onPressed,
       leading: const XCircularImage(
         width: 45,
         height: 45,
@@ -35,7 +40,7 @@ class XUserProfileTile extends StatelessWidget {
           Iconsax.edit,
           color: XColors.white,
         ),
-        onPressed: () {},
+        onPressed: onPressed,
       ),
     );
   }
