@@ -15,7 +15,6 @@ class XBrandShowCase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = XHelperFunctions.isDarkMode(context);
     return XRoundedContainer(
       showBorder: true,
       borderColor: XColors.darkGrey,
@@ -42,12 +41,11 @@ class XBrandShowCase extends StatelessWidget {
   }
 
   Widget brandImages(String image, context) {
+    final dark = XHelperFunctions.isDarkMode(context);
     return Expanded(
       child: XRoundedContainer(
         height: 100,
-        backgroundColor: XHelperFunctions.isDarkMode(context)
-            ? XColors.darkenGrey
-            : XColors.white,
+        backgroundColor: dark ? XColors.darkenGrey : XColors.white,
         margin: const EdgeInsets.only(right: XSizes.sm),
         padding: const EdgeInsets.all(XSizes.md),
         child: Image(
