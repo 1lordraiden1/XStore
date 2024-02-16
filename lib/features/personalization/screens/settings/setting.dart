@@ -6,7 +6,7 @@ import 'package:xstore/common/widgets/shapes/containers/primary_header_container
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/common/widgets/tiles/setting_tile.dart';
 import 'package:xstore/common/widgets/tiles/user_tile.dart';
-import 'package:xstore/features/shop/screens/profile.dart';
+import 'package:xstore/features/personalization/screens/profile/profile.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
