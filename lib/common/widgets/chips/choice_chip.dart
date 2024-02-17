@@ -18,26 +18,29 @@ class XChoiceChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isColor = XHelperFunctions.getColor(text) != null;
-    return ChoiceChip(
-      label: isColor ? const SizedBox() : Text(text),
-      selected: selected,
-      onSelected: onSelected,
-      labelStyle: TextStyle(
-        color: selected ? XColors.white : null,
+    return Theme(
+      data: Theme.of(context).copyWith(canvasColor: Colors.transparent),
+      child: ChoiceChip(
+        label: isColor ? const SizedBox() : Text(text),
+        selected: selected,
+        onSelected: onSelected,
+        labelStyle: TextStyle(
+          color: selected ? XColors.white : null,
+        ),
+        avatar: isColor
+            ? XCircularBackground(
+                width: 50,
+                height: 50,
+                backgroundColor: XHelperFunctions.getColor(text)!,
+              )
+            : null,
+        shape: isColor ? const CircleBorder() : null,
+        labelPadding:
+            isColor ? const EdgeInsets.all(0) : null, // Centering the Icon
+        padding: isColor ? const EdgeInsets.all(0) : null,
+        //selectedColor: Colors.green,
+        backgroundColor: isColor ? XHelperFunctions.getColor(text) : null,
       ),
-      avatar: isColor
-          ? XCircularBackground(
-              width: 50,
-              height: 50,
-              backgroundColor: XHelperFunctions.getColor(text)!,
-            )
-          : null,
-      shape: isColor ? const CircleBorder() : null,
-      labelPadding:
-          isColor ? const EdgeInsets.all(0) : null, // Centering the Icon
-      padding: isColor ? const EdgeInsets.all(0) : null,
-      //selectedColor: Colors.green,
-      backgroundColor: isColor ? XHelperFunctions.getColor(text) : null,
     );
   }
 }

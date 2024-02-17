@@ -25,6 +25,10 @@ dependencies:
   get: ^4.6.5
   get_storage: ^2.1.1
 
+  # Product Specific
+  readmore: ^2.2.0
+  carousel_slider: ^4.2.1
+
   # Fonts
   google_fonts: ^6.1.0
 
@@ -32,7 +36,7 @@ dependencies:
   http: ^1.1.0
   intl: ^0.18.1
   logger: ^2.0.2+1
-  carousel_slider: ^4.2.1
+  
   url_launcher: ^6.1.14
   flutter_native_splash: ^2.3.5
   smooth_page_indicator: ^1.1.0
