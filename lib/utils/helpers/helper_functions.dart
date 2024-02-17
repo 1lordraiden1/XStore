@@ -16,8 +16,10 @@ class XHelperFunctions {
       return Colors.purple;
     } else if (value == 'Black') {
       return Colors.black;
-    } else {
+    } else if (value == 'White') {
       return Colors.white;
+    } else {
+      return null;
     }
   }
 

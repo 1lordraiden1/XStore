@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:xstore/common/widgets/chips/choice_chip.dart';
 import 'package:xstore/common/widgets/shapes/containers/rounded_container.dart';
+import 'package:xstore/common/widgets/texts/product_price.dart';
+import 'package:xstore/common/widgets/texts/product_text_title.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/sizes.dart';
@@ -19,27 +22,122 @@ class XProductAttributes extends StatelessWidget {
           child: Column(
             children: [
               // Title
-              Row(
+              Wrap(
                 children: [
-                  XSectionHeading(title: "Variation"),
-                  SizedBox(
+                  const XSectionHeading(title: "Variation"),
+                  const SizedBox(
                     width: XSizes.spaceBtwItems,
                   ),
-                  Row(
+                  Column(
                     children: [
-                      Text(
-                        "\$25.99",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleSmall!
-                            .apply(decoration: TextDecoration.lineThrough,),
+                      Row(
+                        children: [
+                          const XProductTitleText(
+                            title: "Price : ",
+                            smallSize: true,
+                          ),
+                          Text(
+                            "\$25.99",
+                            style:
+                                Theme.of(context).textTheme.titleSmall!.apply(
+                                      decoration: TextDecoration.lineThrough,
+                                    ),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
+                          const SizedBox(
+                            width: XSizes.spaceBtwItems,
+                          ),
+                          const XProductPrice(price: "20.99"),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const XProductTitleText(title: "Stock : "),
+                          Text(
+                            "In Stock",
+                            style: Theme.of(context).textTheme.titleMedium,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ],
-              )
+              ),
+
+              const XProductTitleText(
+                title:
+                    "This is the description of the product and it can go upto max 4 lines",
+                smallSize: true,
+                maxLines: 4,
+              ),
             ],
           ),
+        ),
+        const SizedBox(
+          height: XSizes.spaceBtwItems,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const XSectionHeading(title: "Colors"),
+            const SizedBox(
+              height: XSizes.spaceBtwItems,
+            ),
+            Wrap(
+              spacing: 8,
+              children: [
+                XChoiceChip(
+                  selected: true,
+                  text: "Red",
+                  onSelected: (value) {},
+                ),
+                XChoiceChip(
+                  selected: false,
+                  text: "Blue",
+                  onSelected: (value) {},
+                ),
+                XChoiceChip(
+                  selected: false,
+                  text: "Green",
+                  onSelected: (value) {},
+                ),
+              ],
+            )
+          ],
+        ),
+        const SizedBox(
+          height: XSizes.spaceBtwItems,
+        ),
+        Column(
+          children: [
+            const XSectionHeading(title: "Sizes"),
+            const SizedBox(
+              height: XSizes.spaceBtwItems,
+            ),
+            Wrap(
+              spacing: 8,
+              children: [
+                XChoiceChip(
+                  selected: false,
+                  text: "EU 34",
+                  onSelected: (value) {},
+                ),
+                XChoiceChip(
+                  selected: true,
+                  text: "EU 36",
+                  onSelected: (value) {},
+                ),
+                XChoiceChip(
+                  selected: false,
+                  text: 'EU 56',
+                  onSelected: (value) {},
+                ),
+              ],
+            ),
+          ],
         ),
       ],
     );

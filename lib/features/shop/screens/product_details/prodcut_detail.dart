@@ -47,6 +47,18 @@ class ProductDetailScreen extends StatelessWidget {
                   XProductMetaData(),
 
                   XProductAttributes(),
+
+                  SizedBox(
+                    height: XSizes.spaceBtwSections,
+                  ),
+
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('Checkout'),
+                    ),
+                  ),
                 ],
               ),
             ),
