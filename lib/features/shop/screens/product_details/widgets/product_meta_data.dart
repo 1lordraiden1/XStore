@@ -8,14 +8,12 @@ import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/enums.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
-import 'package:xstore/utils/helpers/helper_functions.dart';
 
 class XProductMetaData extends StatelessWidget {
   const XProductMetaData({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final dark = XHelperFunctions.isDarkMode(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -70,14 +68,14 @@ class XProductMetaData extends StatelessWidget {
         const SizedBox(
           height: XSizes.spaceBtwItems / 1.5,
         ),
-        Row(
+        const Row(
           children: [
             XCircularImage(
               width: 40,
               height: 40,
               image: XImages.clothes,
             ),
-            const XBrandTitleVerfiedIcon(
+            XBrandTitleVerfiedIcon(
               title: 'Meta',
               brandTextSize: TextSizes.medium,
             ),

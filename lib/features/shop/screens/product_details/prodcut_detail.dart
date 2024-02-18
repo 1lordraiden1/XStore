@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
-import 'package:xstore/common/widgets/appbar/appbar.dart';
-import 'package:xstore/common/widgets/icons/circular_icon.dart';
-import 'package:xstore/common/widgets/shapes/curved_edges/curved_edges_widget.dart';
-import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/features/shop/screens/product_details/widgets/bottom_add_to_cart.dart';
 import 'package:xstore/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:xstore/features/shop/screens/product_details/widgets/product_meta_data.dart';
-import 'package:xstore/utils/constants/colors.dart';
-import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
-import 'package:xstore/utils/helpers/helper_functions.dart';
 
 import 'widgets/product_image_slider.dart';
 import 'widgets/rating_share_widget.dart';
@@ -22,7 +14,6 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = XHelperFunctions.isDarkMode(context);
     return Scaffold(
       bottomNavigationBar: const XBottomAddToCart(),
       body: SingleChildScrollView(
@@ -48,11 +39,11 @@ class ProductDetailScreen extends StatelessWidget {
                     numberOfRates: '999',
                   ),
 
-                  XProductMetaData(),
+                  const XProductMetaData(),
 
-                  XProductAttributes(),
+                  const XProductAttributes(),
 
-                  SizedBox(
+                  const SizedBox(
                     height: XSizes.spaceBtwSections,
                   ),
 
@@ -60,19 +51,19 @@ class ProductDetailScreen extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {},
-                      child: Text('Checkout'),
+                      child: const Text('Checkout'),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: XSizes.spaceBtwItems,
                   ),
 
-                  XSectionHeading(title: "Description"),
-                  SizedBox(
+                  const XSectionHeading(title: "Description"),
+                  const SizedBox(
                     height: XSizes.spaceBtwItems,
                   ),
 
-                  ReadMoreText(
+                  const ReadMoreText(
                     "This is the description of the product and it can go upto max 4 lines This is the description of the product and it can go upto max 4 lines This is the description of the product and it can go upto max 4 lines",
                     trimLength: 2,
                     trimMode: TrimMode.Line,
@@ -88,8 +79,8 @@ class ProductDetailScreen extends StatelessWidget {
                     ),
                   ),
 
-                  Divider(),
-                  SizedBox(
+                  const Divider(),
+                  const SizedBox(
                     height: XSizes.spaceBtwItems,
                   ),
                   XSectionHeading(
@@ -97,7 +88,7 @@ class ProductDetailScreen extends StatelessWidget {
                     showActionButton: true,
                     onPressed: () {},
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: XSizes.spaceBtwItems,
                   ),
                 ],

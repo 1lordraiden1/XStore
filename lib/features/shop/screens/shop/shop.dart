@@ -27,7 +27,7 @@ class ShopScreen extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           actions: [
-            XCartCountWidget(onPressed: () {}),
+            XCartCountWidget(),
           ],
         ),
         body: NestedScrollView(

@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:xstore/features/shop/screens/cart/cart.dart';
 import 'package:xstore/utils/constants/colors.dart';
 
 class XCartCountWidget extends StatelessWidget {
   const XCartCountWidget({
     super.key,
     this.iconColor = XColors.white,
-    required this.onPressed,
   });
 
   final Color? iconColor;
-  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         IconButton(
-          onPressed: onPressed,
+          onPressed: () => Get.to(() => const CartScreen()),
           icon: Icon(
             Iconsax.shopping_bag,
             color: iconColor,

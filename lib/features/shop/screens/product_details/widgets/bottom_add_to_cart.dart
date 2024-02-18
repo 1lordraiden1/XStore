@@ -29,7 +29,7 @@ class XBottomAddToCart extends StatelessWidget {
         children: [
           Row(
             children: [
-              XCircularIcon(
+              const XCircularIcon(
                 icon: Iconsax.minus,
                 backgroundColor: XColors.darkGrey,
                 width: 40,
@@ -46,7 +46,7 @@ class XBottomAddToCart extends StatelessWidget {
               const SizedBox(
                 width: XSizes.spaceBtwItems,
               ),
-              XCircularIcon(
+              const XCircularIcon(
                 icon: Iconsax.add,
                 backgroundColor: XColors.black,
                 width: 40,
