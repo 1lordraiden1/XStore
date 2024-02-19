@@ -44,7 +44,7 @@ class SignupScreen extends StatelessWidget {
 
               // check box
 
-              SignupCheckbox(dark: dark),
+              SignupCheckbox(),
               const SizedBox(
                 height: XSizes.spaceBtwItems,
               ),

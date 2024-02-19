@@ -11,79 +11,80 @@ class SignupForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-        child: Column(
-      children: [
-        Row(
-          children: [
-            Expanded(
-              child: TextFormField(
-                expands: false,
-                decoration: const InputDecoration(
-                  prefix: Icon(Iconsax.direct_right),
-                  labelText: XTexts.email,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: TextFormField(
+                  expands: false,
+                  decoration: const InputDecoration(
+                    prefix: Icon(Iconsax.direct_right),
+                    labelText: XTexts.email,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              width: XSizes.spaceBtwInputFields,
-            ),
-            Expanded(
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  prefix: Icon(Iconsax.direct_right),
-                  labelText: XTexts.email,
+              const SizedBox(
+                width: XSizes.spaceBtwInputFields,
+              ),
+              Expanded(
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    prefix: Icon(Iconsax.direct_right),
+                    labelText: XTexts.email,
+                  ),
                 ),
               ),
+            ],
+          ),
+
+          const SizedBox(
+            height: XSizes.spaceBtwInputFields,
+          ),
+
+          // Rest of Form
+
+          TextFormField(
+            decoration: const InputDecoration(
+              prefix: Icon(Iconsax.direct_right),
+              labelText: XTexts.email,
             ),
-          ],
-        ),
-
-        const SizedBox(
-          height: XSizes.spaceBtwInputFields,
-        ),
-
-        // Rest of Form
-
-        TextFormField(
-          decoration: const InputDecoration(
-            prefix: Icon(Iconsax.direct_right),
-            labelText: XTexts.email,
           ),
-        ),
 
-        const SizedBox(
-          height: XSizes.spaceBtwInputFields,
-        ),
-
-        TextFormField(
-          decoration: const InputDecoration(
-            prefix: Icon(Iconsax.direct_right),
-            labelText: XTexts.email,
+          const SizedBox(
+            height: XSizes.spaceBtwInputFields,
           ),
-        ),
 
-        const SizedBox(
-          height: XSizes.spaceBtwInputFields,
-        ),
-
-        TextFormField(
-          decoration: const InputDecoration(
-            prefix: Icon(Iconsax.direct_right),
-            labelText: XTexts.email,
+          TextFormField(
+            decoration: const InputDecoration(
+              prefix: Icon(Iconsax.direct_right),
+              labelText: XTexts.email,
+            ),
           ),
-        ),
 
-        const SizedBox(
-          height: XSizes.spaceBtwInputFields,
-        ),
-
-        TextFormField(
-          decoration: const InputDecoration(
-            prefix: Icon(Iconsax.direct_right),
-            labelText: XTexts.email,
+          const SizedBox(
+            height: XSizes.spaceBtwInputFields,
           ),
-        ),
-      ],
-    ));
+
+          TextFormField(
+            decoration: const InputDecoration(
+              prefix: Icon(Iconsax.direct_right),
+              labelText: XTexts.email,
+            ),
+          ),
+
+          const SizedBox(
+            height: XSizes.spaceBtwInputFields,
+          ),
+
+          TextFormField(
+            decoration: const InputDecoration(
+              prefix: Icon(Iconsax.direct_right),
+              labelText: XTexts.email,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
