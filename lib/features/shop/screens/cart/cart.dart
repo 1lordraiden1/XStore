@@ -4,8 +4,10 @@ import 'package:iconsax/iconsax.dart';
 import 'package:xstore/common/widgets/appbar/appbar.dart';
 import 'package:xstore/common/widgets/icons/brand_title_icon.dart';
 import 'package:xstore/common/widgets/icons/circular_icon.dart';
+import 'package:xstore/common/widgets/products/cart/add_remove.dart';
 import 'package:xstore/common/widgets/products/cart/cart_item.dart';
 import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';
+import 'package:xstore/common/widgets/texts/product_price.dart';
 import 'package:xstore/common/widgets/texts/product_text_title.dart';
 import 'package:xstore/features/shop/screens/home/home.dart';
 import 'package:xstore/utils/constants/colors.dart';
@@ -43,12 +45,37 @@ class CartScreen extends StatelessWidget {
             separatorBuilder: (_, __) => const SizedBox(
               height: XSizes.spaceBtwItems,
             ),
-            itemBuilder: (_, index) => Column(
+            itemBuilder: (_, index) => const Column(
               children: [
                 XCartItem(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 65,
+                        ),
+                        XProductQuantitiyWithAddRemove(),
+                      ],
+                    ),
+                    XProductPrice(price: "399.99"),
+                  ],
+                ),
               ],
             ),
           ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(
+          left: XSizes.defaultSpace,
+          right: XSizes.defaultSpace,
+          bottom: XSizes.defaultSpace,
+        ),
+        child: ElevatedButton(
+          onPressed: () {},
+          child: const Text("Checkout \$1999.99"),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xstore/utils/constants/colors.dart';
 
 class XElevatedButtonTheme {
   XElevatedButtonTheme._();
@@ -9,11 +10,11 @@ class XElevatedButtonTheme {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.white,
-      backgroundColor: Colors.blue,
+      backgroundColor: XColors.primary,
       disabledBackgroundColor: Colors.grey,
       disabledForegroundColor: Colors.grey,
       side: const BorderSide(
-        color: Colors.blue,
+        color: XColors.primary,
       ),
       padding: const EdgeInsets.symmetric(vertical: 18),
       textStyle: const TextStyle(
@@ -30,14 +31,14 @@ class XElevatedButtonTheme {
   // -- Dark Theme
   static ElevatedButtonThemeData darkElevatedButtonTheme =
       ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
+    style: ElevatedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.white,
-      backgroundColor: Colors.blue,
+      backgroundColor: XColors.primary,
       disabledBackgroundColor: Colors.grey,
       disabledForegroundColor: Colors.grey,
       side: const BorderSide(
-        color: Colors.blue,
+        color: XColors.primary,
       ),
       padding: const EdgeInsets.symmetric(vertical: 18),
       textStyle: const TextStyle(
@@ -49,5 +50,5 @@ class XElevatedButtonTheme {
         borderRadius: BorderRadius.circular(12),
       ),
     ),
-      );
+  );
 }

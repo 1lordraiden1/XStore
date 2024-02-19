@@ -40,6 +40,9 @@ dependencies:
   url_launcher: ^6.1.14
   flutter_native_splash: ^2.3.5
   smooth_page_indicator: ^1.1.0
+
+  # Firebase
+  firebase_core: ^2.24.2
   
 
 dev_dependencies:

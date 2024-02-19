@@ -29,7 +29,7 @@ class XCartItem extends StatelessWidget {
         ),
 
         const SizedBox(
-          height: XSizes.spaceBtwItems,
+          width: XSizes.spaceBtwItems,
         ),
         Expanded(
           child: Column(
@@ -64,36 +64,6 @@ class XCartItem extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
-              Row(
-                children: [
-                  const XCircularIcon(
-                    size: 15,
-                    icon: Iconsax.minus,
-                    backgroundColor: XColors.darkGrey,
-                    width: 30,
-                    height: 30,
-                    color: XColors.white,
-                  ),
-                  const SizedBox(
-                    width: XSizes.spaceBtwItems,
-                  ),
-                  Text(
-                    "1",
-                    style: Theme.of(context).textTheme.titleSmall,
-                  ),
-                  const SizedBox(
-                    width: XSizes.spaceBtwItems,
-                  ),
-                  const XCircularIcon(
-                    size: 15,
-                    icon: Iconsax.add,
-                    backgroundColor: XColors.black,
-                    width: 30,
-                    height: 30,
-                    color: XColors.white,
-                  ),
-                ],
               ),
             ],
           ),

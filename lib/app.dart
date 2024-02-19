@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:xstore/features/auth/screens/onboarding/onboarding.dart';
+import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/theme/theme.dart';
 
 class MyApp extends StatelessWidget {
@@ -14,7 +15,14 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: XAppTheme.lightTheme,
       darkTheme: XAppTheme.darkTheme,
-      home: const OnBoardingScreen(),
+      home: const Scaffold(
+        backgroundColor: XColors.primary,
+        body: Center(
+          child: CircularProgressIndicator(
+            color: Colors.white,
+          ),
+        ),
+      ),
     );
   }
 }
