@@ -36,6 +36,8 @@ dependencies:
   http: ^1.1.0
   intl: ^0.18.1
   logger: ^2.0.2+1
+  lottie: ^2.6.0
+  connectivity_plus: ^5.0.2
   
   url_launcher: ^6.1.14
   flutter_native_splash: ^2.3.5
@@ -43,6 +45,11 @@ dependencies:
 
   # Firebase
   firebase_core: ^2.24.2
+  firebase_auth: ^4.16.0
+  cloud_firestore: ^4.14.0
+  
+  
+
   
 
 dev_dependencies:

@@ -6,6 +6,8 @@ import 'package:xstore/utils/constants/sizes.dart';
 import 'package:xstore/utils/constants/text_strings.dart';
 import 'package:xstore/utils/validators/validation.dart';
 
+import 'signup_checkbox.dart';
+
 class SignupForm extends StatelessWidget {
   const SignupForm({
     super.key,
@@ -95,13 +97,43 @@ class SignupForm extends StatelessWidget {
             height: XSizes.spaceBtwInputFields,
           ),
 
-          TextFormField(
-            controller: controller.password,
-            validator: (value) => XValidator.validatePassword(value),
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Iconsax.password_check),
-              suffixIcon: Icon(Iconsax.eye_slash),
-              labelText: XTexts.password,
+          Obx(
+            () => TextFormField(
+              controller: controller.password,
+              validator: (value) => XValidator.validatePassword(value),
+              obscureText: controller.hidePassword.value,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Iconsax.password_check),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    controller.hidePassword.value
+                        ? Iconsax.eye_slash
+                        : Iconsax.eye,
+                  ),
+                  onPressed: () => controller.hidePassword.value =
+                      !controller.hidePassword.value,
+                ),
+                labelText: XTexts.password,
+              ),
+            ),
+          ),
+
+          const SizedBox(
+            height: XSizes.spaceBtwSections,
+          ),
+
+          const SignupCheckbox(),
+          const SizedBox(
+            height: XSizes.spaceBtwSections,
+          ),
+
+          // create buttton
+
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () => controller.signup(),
+              child: const Text("Create Account"),
             ),
           ),
         ],

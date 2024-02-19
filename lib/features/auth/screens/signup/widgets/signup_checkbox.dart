@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:xstore/features/auth/controllers/signup/signup_controller.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/helpers/helper_functions.dart';
 
@@ -9,10 +11,19 @@ class SignupCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = SignupController.instance;
     final dark = XHelperFunctions.isDarkMode(context);
     return Row(
       children: [
-        SizedBox(child: Checkbox(value: true, onChanged: (value) {})),
+        SizedBox(
+          child: Obx(
+            () => Checkbox(
+              value: controller.privacyPolicy.value,
+              onChanged: (value) => controller.privacyPolicy.value =
+                  !controller.privacyPolicy.value,
+            ),
+          ),
+        ),
         Flexible(
           child: Text.rich(
             maxLines: 2,

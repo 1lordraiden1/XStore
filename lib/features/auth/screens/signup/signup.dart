@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:xstore/features/auth/screens/signup/verify_email.dart';
 import 'package:xstore/utils/constants/sizes.dart';
-import 'package:xstore/utils/helpers/helper_functions.dart';
 import 'package:xstore/utils/theme/custom/form_divider.dart';
 import 'package:xstore/utils/theme/custom/social_buttons.dart';
-import 'widgets/signup_checkbox.dart';
 import 'widgets/signup_form.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -13,8 +9,6 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = XHelperFunctions.isDarkMode(context);
-
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -38,41 +32,24 @@ class SignupScreen extends StatelessWidget {
 
               const SignupForm(),
 
-              const SizedBox(
-                height: XSizes.spaceBtwSections,
-              ),
-
+             
               // check box
 
-              SignupCheckbox(),
-              const SizedBox(
-                height: XSizes.spaceBtwItems,
-              ),
-
-              // create buttton
-
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () => Get.to(() => const VerifyEmail()),
-                  child: const Text("Create Account"),
-                ),
-              ),
               const SizedBox(
                 height: XSizes.spaceBtwSections,
               ),
 
               //divider
 
-              XFormDivider(),
+              const XFormDivider(),
 
               const SizedBox(
-                height: XSizes.spaceBtwSections,
+                height: XSizes.spaceBtwItems,
               ),
 
               //google and facebook
 
-              const XSocialButtons()
+              const XSocialButtons(),
             ],
           ),
         ),

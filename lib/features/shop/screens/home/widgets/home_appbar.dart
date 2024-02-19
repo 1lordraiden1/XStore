@@ -29,7 +29,7 @@ class XHomeAppBarWidget extends StatelessWidget {
           ),
         ],
       ),
-      actions: [
+      actions: const [
         XCartCountWidget(),
       ],
     );

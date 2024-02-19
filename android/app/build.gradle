@@ -44,6 +44,7 @@ android {
     }
 
     defaultConfig {
+        
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.xstore"
    
@@ -53,6 +54,8 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        minSdkVersion 19
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -72,8 +75,3 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
-android {                                                                                     
-   defaultConfig {                                                                            
-        minSdkVersion 19                                                                         
-    }                                                                                           
-}         
