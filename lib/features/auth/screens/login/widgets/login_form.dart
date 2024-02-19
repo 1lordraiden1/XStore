@@ -21,7 +21,7 @@ class XLoginForm extends StatelessWidget {
           children: [
             TextFormField(
               decoration: const InputDecoration(
-                prefix: Icon(Iconsax.direct_right),
+                prefixIcon: Icon(Iconsax.direct),
                 labelText: XTexts.email,
               ),
             ),
@@ -30,7 +30,7 @@ class XLoginForm extends StatelessWidget {
             ),
             TextFormField(
               decoration: const InputDecoration(
-                prefix: Icon(Iconsax.password_check),
+                prefixIcon: Icon(Iconsax.password_check),
                 labelText: XTexts.password,
                 suffixIcon: Icon(Iconsax.eye_slash),
               ),
@@ -41,8 +41,10 @@ class XLoginForm extends StatelessWidget {
 
             // remember me
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Wrap(
+              // this is Row
+              crossAxisAlignment:
+                  WrapCrossAlignment.center, // adjusted from main axis .start
               children: [
                 Row(
                   children: [

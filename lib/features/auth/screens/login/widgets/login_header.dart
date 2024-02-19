@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 import 'package:xstore/utils/constants/text_strings.dart';
+import 'package:xstore/utils/helpers/helper_functions.dart';
 
 class LoginHeader extends StatelessWidget {
   const LoginHeader({
     super.key,
-    required this.dark,
   });
-
-  final bool dark;
 
   @override
   Widget build(BuildContext context) {
+    final dark = XHelperFunctions.isDarkMode(context);
     return Column(
       children: [
         // logo

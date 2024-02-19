@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:xstore/features/auth/controllers/signup/signup_controller.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 import 'package:xstore/utils/constants/text_strings.dart';
+import 'package:xstore/utils/validators/validation.dart';
 
 class SignupForm extends StatelessWidget {
   const SignupForm({
@@ -10,17 +13,22 @@ class SignupForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignupController());
     return Form(
+      key: controller.signupFormKey,
       child: Column(
         children: [
           Row(
             children: [
               Expanded(
                 child: TextFormField(
+                  controller: controller.firstName,
+                  validator: (value) =>
+                      XValidator.validateEmptyText("First name", value),
                   expands: false,
                   decoration: const InputDecoration(
-                    prefix: Icon(Iconsax.direct_right),
-                    labelText: XTexts.email,
+                    prefixIcon: Icon(Iconsax.user),
+                    labelText: XTexts.firstName,
                   ),
                 ),
               ),
@@ -29,9 +37,12 @@ class SignupForm extends StatelessWidget {
               ),
               Expanded(
                 child: TextFormField(
+                  controller: controller.lastName,
+                  validator: (value) =>
+                      XValidator.validateEmptyText("Last name", value),
                   decoration: const InputDecoration(
-                    prefix: Icon(Iconsax.direct_right),
-                    labelText: XTexts.email,
+                    prefixIcon: Icon(Iconsax.user),
+                    labelText: XTexts.lastName,
                   ),
                 ),
               ),
@@ -45,8 +56,24 @@ class SignupForm extends StatelessWidget {
           // Rest of Form
 
           TextFormField(
+            controller: controller.username,
+            validator: (value) =>
+                XValidator.validateEmptyText("User name", value),
             decoration: const InputDecoration(
-              prefix: Icon(Iconsax.direct_right),
+              prefixIcon: Icon(Iconsax.user_edit),
+              labelText: XTexts.username,
+            ),
+          ),
+
+          const SizedBox(
+            height: XSizes.spaceBtwInputFields,
+          ),
+
+          TextFormField(
+            controller: controller.email,
+            validator: (value) => XValidator.validateEmail(value),
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Iconsax.direct),
               labelText: XTexts.email,
             ),
           ),
@@ -56,9 +83,11 @@ class SignupForm extends StatelessWidget {
           ),
 
           TextFormField(
+            controller: controller.phoneNumber,
+            validator: (value) => XValidator.validatePhoneNumber(value),
             decoration: const InputDecoration(
-              prefix: Icon(Iconsax.direct_right),
-              labelText: XTexts.email,
+              prefixIcon: Icon(Iconsax.call),
+              labelText: XTexts.phoneNumber,
             ),
           ),
 
@@ -67,20 +96,12 @@ class SignupForm extends StatelessWidget {
           ),
 
           TextFormField(
+            controller: controller.password,
+            validator: (value) => XValidator.validatePassword(value),
             decoration: const InputDecoration(
-              prefix: Icon(Iconsax.direct_right),
-              labelText: XTexts.email,
-            ),
-          ),
-
-          const SizedBox(
-            height: XSizes.spaceBtwInputFields,
-          ),
-
-          TextFormField(
-            decoration: const InputDecoration(
-              prefix: Icon(Iconsax.direct_right),
-              labelText: XTexts.email,
+              prefixIcon: Icon(Iconsax.password_check),
+              suffixIcon: Icon(Iconsax.eye_slash),
+              labelText: XTexts.password,
             ),
           ),
         ],

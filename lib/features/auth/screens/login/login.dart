@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xstore/common/styles/spacing_style.dart';
 import 'package:xstore/utils/constants/sizes.dart';
-import 'package:xstore/utils/helpers/helper_functions.dart';
 
 import '../../../../utils/theme/custom/form_divider.dart';
 import 'widgets/login_form.dart';
@@ -13,30 +12,30 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = XHelperFunctions.isDarkMode(context);
+    
 
-    return Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
         child: Padding(
           padding: XSpacingStyle.paddingWithAppBarWeight,
           child: Column(
             children: [
-              LoginHeader(dark: dark),
+               LoginHeader(),
 
               // Form
-              const XLoginForm(),
+               XLoginForm(),
 
               //divider
 
-              XFormDivider(dark: dark),
+              XFormDivider(),
 
-              const SizedBox(
+               SizedBox(
                 height: XSizes.spaceBtwSections,
               ),
 
               //google and facebook
 
-              const XSocialButtons()
+               XSocialButtons()
             ],
           ),
         ),

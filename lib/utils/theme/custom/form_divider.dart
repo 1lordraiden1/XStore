@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:xstore/utils/constants/colors.dart';
+import 'package:xstore/utils/helpers/helper_functions.dart';
 
 class XFormDivider extends StatelessWidget {
   const XFormDivider({
     super.key,
-    required this.dark,
   });
-
-  final bool dark;
 
   @override
   Widget build(BuildContext context) {
+    final dark = XHelperFunctions.isDarkMode(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

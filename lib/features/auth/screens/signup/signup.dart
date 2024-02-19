@@ -64,7 +64,7 @@ class SignupScreen extends StatelessWidget {
 
               //divider
 
-              XFormDivider(dark: dark),
+              XFormDivider(),
 
               const SizedBox(
                 height: XSizes.spaceBtwSections,
