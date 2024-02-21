@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
@@ -39,6 +38,26 @@ class AuthenticationRepository extends GetxController {
       deviceStorage.read("isFirstTime") != true
           ? Get.offAll(() => const LoginScreen())
           : Get.offAll(const OnBoardingScreen());
+    }
+  }
+
+  Future<UserCredential> loginWithEmailandPassword(
+      String email, String password) async {
+    try {
+      return await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      throw XFirebaseAuthException(e.code);
+    } on FirebaseException catch (e) {
+      throw XFirebaseException(error: e);
+    } on FormatException catch (e) {
+      throw XFomratException(error: e);
+    } on PlatformException catch (e) {
+      throw XPlatformException(error: e);
+    } catch (e) {
+      throw "Something went wrong, Please try again";
     }
   }
 

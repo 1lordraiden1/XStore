@@ -37,6 +37,12 @@ class SignupController extends GetxController {
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
         XFullScreenLoader.stopLoading();
+        XLoaders.warningSnackBar(
+          title: "No Internet Connection",
+          message:
+              "in order to create account, you must have access to Internet",
+        );
+
         return;
       }
 
@@ -68,6 +74,7 @@ class SignupController extends GetxController {
         id: userCredential.user!.uid,
         username: username.text.trim(),
         email: email.text.trim(),
+        
         firstName: firstName.text.trim(),
         lastName: lastName.text.trim(),
         phoneNumber: phoneNumber.text.trim(),
