@@ -1,12 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 
 class XFirebaseException implements Exception {
   XFirebaseException({required this.error});
 
-  final FirebaseException error;
+  final String error;
 
   String get getUserFriendlyMessage {
-    final errorCode = error.code;
+    final errorCode = error;
 
     if (errorCode.startsWith('invalid-')) {
       return 'The provided input is invalid.';

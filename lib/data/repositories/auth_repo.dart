@@ -49,11 +49,11 @@ class AuthenticationRepository extends GetxController {
         password: password,
       );
     } on FirebaseAuthException catch (e) {
-      throw XFirebaseAuthException(e.code);
+      throw XFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
-      throw XFirebaseException(error: e);
+      throw XFirebaseException(error: e.code);
     } on FormatException catch (e) {
-      throw XFomratException(error: e);
+      throw XFomratException(error: e.message);
     } on PlatformException catch (e) {
       throw XPlatformException(error: e);
     } catch (e) {
@@ -69,9 +69,9 @@ class AuthenticationRepository extends GetxController {
     } on FirebaseAuthException catch (e) {
       throw XFirebaseAuthException(e.code);
     } on FirebaseException catch (e) {
-      throw XFirebaseException(error: e);
+      throw XFirebaseException(error: e.code);
     } on FormatException catch (e) {
-      throw XFomratException(error: e);
+      throw XFomratException(error: e.message);
     } on PlatformException catch (e) {
       throw XPlatformException(error: e);
     } catch (e) {
@@ -85,9 +85,9 @@ class AuthenticationRepository extends GetxController {
     } on FirebaseAuthException catch (e) {
       throw XFirebaseAuthException(e.code);
     } on FirebaseException catch (e) {
-      throw XFirebaseException(error: e);
+      throw XFirebaseException(error: e.code);
     } on FormatException catch (e) {
-      throw XFomratException(error: e);
+      throw XFomratException(error: e.message);
     } on PlatformException catch (e) {
       throw XPlatformException(error: e);
     } catch (e) {
@@ -103,9 +103,9 @@ class AuthenticationRepository extends GetxController {
     } on FirebaseAuthException catch (e) {
       throw XFirebaseAuthException(e.code);
     } on FirebaseException catch (e) {
-      throw XFirebaseException(error: e);
+      throw XFirebaseException(error: e.code);
     } on FormatException catch (e) {
-      throw XFomratException(error: e);
+      throw XFomratException(error: e.message);
     } on PlatformException catch (e) {
       throw XPlatformException(error: e);
     } catch (e) {
