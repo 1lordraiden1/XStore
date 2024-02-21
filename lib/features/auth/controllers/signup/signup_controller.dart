@@ -83,7 +83,7 @@ class SignupController extends GetxController {
         message: ' Your account has been created! Verify to continue. ',
       );
 
-      Get.to(() => const VerifyEmail());
+      Get.to(() => VerifyEmail(email: email.text.trim()));
     } catch (e) {
       XFullScreenLoader.stopLoading();
       XLoaders.errorSnackBar(title: "Oh no!", message: e.toString());
