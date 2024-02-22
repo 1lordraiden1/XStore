@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
 import 'package:xstore/common/widgets/loaders/loaders.dart';
 import 'package:xstore/data/repositories/auth_repo.dart';
 import 'package:xstore/features/auth/controllers/network/network_manager.dart';
@@ -60,16 +58,20 @@ class LoginController extends GetxController {
 
       // Save data for Remember me
 
-      if (rememberMe.value) {
-        localStorge.write("REMEMBER_ME_EMAIL", email.text.trim());
-        localStorge.write("REMEMBER_ME_PASSWORD", password.text.trim());
-      }
-
       final userCredential =
           await AuthenticationRepository.instance.loginWithEmailandPassword(
         email.text.trim(),
         password.text.trim(),
       );
+
+      if (rememberMe.value) {
+        localStorge.write("REMEMBER_ME_EMAIL", email.text.trim());
+        localStorge.write("REMEMBER_ME_PASSWORD", password.text.trim());
+      }
+
+      
+
+
 
       // Remove Loader
       XFullScreenLoader.stopLoading();

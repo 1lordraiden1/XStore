@@ -1,8 +1,11 @@
-
+import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/services.dart';
 import 'package:xstore/utils/formatters/formatter.dart';
 
+@JSONMessageCodec()
+@JsonDecoder()
 class UserModel {
   final String id;
   String firstName;

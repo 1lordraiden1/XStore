@@ -11,7 +11,9 @@ import 'package:xstore/utils/popups/full_screen_loader.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
+
   // Variables
+  
 
   final hidePassword = true.obs;
   final privacyPolicy = true.obs;
@@ -74,7 +76,6 @@ class SignupController extends GetxController {
         id: userCredential.user!.uid,
         username: username.text.trim(),
         email: email.text.trim(),
-        
         firstName: firstName.text.trim(),
         lastName: lastName.text.trim(),
         phoneNumber: phoneNumber.text.trim(),

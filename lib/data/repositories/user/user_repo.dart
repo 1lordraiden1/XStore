@@ -1,3 +1,5 @@
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -16,7 +18,11 @@ class UserRepo extends GetxController {
 
   Future<void> saveUserRecord(UserModel user) async {
     try {
-      await _db.collection("Users").doc(user.id).set(user.toJson());
+      //_db.collection("Users").doc(user.id).set(user.toJson());
+
+      await _db.collection("Users").doc(user.id).set(
+            user.toJson(),
+          );
     } on FirebaseAuthException catch (e) {
       throw XFirebaseAuthException(e.code);
     } on FirebaseException catch (e) {
