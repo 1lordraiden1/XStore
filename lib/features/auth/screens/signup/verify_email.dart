@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xstore/common/widgets/success.dart';
 import 'package:xstore/data/repositories/auth_repo.dart';
 import 'package:xstore/features/auth/controllers/signup/verify_email_controller.dart';
-import 'package:xstore/features/auth/screens/login/login.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
