@@ -1,21 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:xstore/common/widgets/success.dart';
-import 'package:xstore/features/auth/controllers/forget_pass/forget_pass_conroller.dart';
 import 'package:xstore/features/auth/screens/login/login.dart';
-import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
-import 'package:xstore/utils/constants/text_strings.dart';
-import 'package:xstore/utils/validators/validation.dart';
 
-class ForgetPassScreen extends StatelessWidget {
-  const ForgetPassScreen({super.key});
+class ResetPassScreen extends StatelessWidget {
+  const ResetPassScreen(
+      {super.key,
+      required this.image,
+      required this.title,
+      required this.email,
+      required this.onPressed,
+       
+      });
+
+  final String image, title, email;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ForgetPassController());
     return Scaffold(
       appBar: AppBar(
         // to delete the arrow back
@@ -31,42 +34,29 @@ class ForgetPassScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(XSizes.defaultSpace),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              // Image
+              Image(image: AssetImage(image)),
+              const SizedBox(
+                height: XSizes.spaceBtwSections,
+              ),
+
               // String
 
               Text(
-                "Verfiy your Email",
+                title,
                 style: Theme.of(context).textTheme.headlineMedium,
-                textAlign: TextAlign.start,
+                textAlign: TextAlign.center,
               ),
               const SizedBox(
                 height: XSizes.spaceBtwItems,
               ),
 
               Text(
-                "Check your Email",
+                email,
                 style: Theme.of(context).textTheme.labelMedium,
-                textAlign: TextAlign.start,
+                textAlign: TextAlign.center,
               ),
-              const SizedBox(
-                height: XSizes.spaceBtwSections,
-              ),
-
-              // TFF
-
-              Form(
-                key:  controller.forgetPassFormKey,
-                child: TextFormField(
-                  controller: controller.email,
-                  validator: XValidator.validateEmail,
-                  decoration: const InputDecoration(
-                    prefix: Icon(Iconsax.direct_right),
-                    labelText: XTexts.email,
-                  ),
-                ),
-              ),
-
               const SizedBox(
                 height: XSizes.spaceBtwSections,
               ),
@@ -76,7 +66,7 @@ class ForgetPassScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => controller.sendPasswordResetEmail(),
+                  onPressed: onPressed,
                   child: const Text("Confirm"),
                 ),
               ),

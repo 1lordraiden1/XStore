@@ -33,7 +33,7 @@ class XHomeAppBarWidget extends StatelessWidget {
                 ),
           ),
           Text(
-            user.firstName.text,
+            '',
             style: Theme.of(context)
                 .textTheme
                 .headlineSmall!

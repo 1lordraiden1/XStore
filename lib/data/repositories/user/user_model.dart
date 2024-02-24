@@ -1,9 +1,8 @@
-
+import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:xstore/utils/formatters/formatter.dart';
-
 
 class UserModel {
   final String id;
@@ -49,6 +48,17 @@ class UserModel {
         phoneNumber: '',
         profilePicture: '',
       );
+
+  Map<String, dynamic> jsonReader() {
+    return JsonDecoder((key, value) => {
+          'FirstName': firstName,
+          'LastName': lastName,
+          'Username': username,
+          'Email': email,
+          'PhoneNumber': phoneNumber,
+          'ProfilePicture': profilePicture,
+        }) as Map<String, dynamic>;
+  }
 
   Map<String, dynamic> toJson() {
     return {

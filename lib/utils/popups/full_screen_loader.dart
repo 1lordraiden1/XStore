@@ -11,6 +11,7 @@ class XFullScreenLoader {
           .overlayContext!, // gets the context of the overlay children (dialogs)
       barrierDismissible: false, // not dissmissed by tapping outside it
       builder: (_) => PopScope(
+        canPop: false,
         child: Container(
           // !! Need to add PopScope !!
           color: XHelperFunctions.isDarkMode(Get.context!)
@@ -23,7 +24,7 @@ class XFullScreenLoader {
               const SizedBox(
                 height: 250,
               ),
-              XAnimationLoaderWidget(text: text, animation: animation)
+              XAnimationLoaderWidget(text: text, animation: animation),
             ],
           ),
         ),
