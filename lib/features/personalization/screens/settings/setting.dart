@@ -6,15 +6,18 @@ import 'package:xstore/common/widgets/shapes/containers/primary_header_container
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/common/widgets/tiles/setting_tile.dart';
 import 'package:xstore/common/widgets/tiles/user_tile.dart';
+import 'package:xstore/data/repositories/auth_repo.dart';
 import 'package:xstore/features/personalization/screens/profile/profile.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/sizes.dart';
+import 'package:xstore/utils/helpers/helper_functions.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final dark = XHelperFunctions.isDarkMode(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -122,6 +125,16 @@ class SettingScreen extends StatelessWidget {
                     title: "HQ Image",
                     subtitle: "Set image quality",
                     trailing: Switch(value: true, onChanged: (value) {}),
+                  ),
+                  SizedBox(
+                    height: XSizes.spaceBtwSections,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () => AuthenticationRepository().logout(),
+                      child: const Text("Log out"),
+                    ),
                   ),
                 ],
               ),

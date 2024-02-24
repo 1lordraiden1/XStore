@@ -58,20 +58,18 @@ class LoginController extends GetxController {
 
       // Save data for Remember me
 
+      if (rememberMe.value) {
+        localStorge.write("REMEMBER_ME_EMAIL", email.text.trim());
+        localStorge.write("REMEMBER_ME_PASSWORD", password.text.trim());
+      }
+
       final userCredential =
           await AuthenticationRepository.instance.loginWithEmailandPassword(
         email.text.trim(),
         password.text.trim(),
       );
 
-      if (rememberMe.value) {
-        localStorge.write("REMEMBER_ME_EMAIL", email.text.trim());
-        localStorge.write("REMEMBER_ME_PASSWORD", password.text.trim());
-      }
-
-      
-
-
+      await userController.saveUserRecord(userCredential);
 
       // Remove Loader
       XFullScreenLoader.stopLoading();

@@ -68,12 +68,12 @@ class SignupController extends GetxController {
       // Register user in the FB Auth
       final userCredential = await AuthenticationRepository.instance
           .registerWithEmailandPassword(
-              email.text.trim(), password.text.trim());
+              email.text.trim(), password.text.trim(),);
 
       // Saving Authed user data
 
       final newUser = UserModel(
-        id: userCredential.user!.uid,
+        id: userCredential!.user!.uid,
         username: username.text.trim(),
         email: email.text.trim(),
         firstName: firstName.text.trim(),

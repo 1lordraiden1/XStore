@@ -10,19 +10,22 @@ class XFullScreenLoader {
       context: Get
           .overlayContext!, // gets the context of the overlay children (dialogs)
       barrierDismissible: false, // not dissmissed by tapping outside it
-      builder: (_) => Container( // !! Need to add PopScope !! 
-        color: XHelperFunctions.isDarkMode(Get.context!)
-            ? XColors.dark
-            : XColors.white,
-        width: double.infinity,
-        height: double.infinity,
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 250,
-            ),
-            XAnimationLoaderWidget(text: text, animation: animation)
-          ],
+      builder: (_) => PopScope(
+        child: Container(
+          // !! Need to add PopScope !!
+          color: XHelperFunctions.isDarkMode(Get.context!)
+              ? XColors.dark
+              : XColors.white,
+          width: double.infinity,
+          height: double.infinity,
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 250,
+              ),
+              XAnimationLoaderWidget(text: text, animation: animation)
+            ],
+          ),
         ),
       ),
     );
