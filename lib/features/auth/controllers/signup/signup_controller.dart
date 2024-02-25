@@ -58,6 +58,7 @@ class SignupController extends GetxController {
       // Privacy check
 
       if (!privacyPolicy.value) {
+
         XLoaders.warningSnackBar(
             title: "Accept Privacy Policy",
             message:
@@ -66,6 +67,7 @@ class SignupController extends GetxController {
       }
 
       // Register user in the FB Auth
+
       final userCredential = await AuthenticationRepository.instance
           .registerWithEmailandPassword(
               email.text.trim(), password.text.trim(),);
@@ -85,6 +87,8 @@ class SignupController extends GetxController {
       final userRepo = Get.put(UserRepo());
 
       await userRepo.saveUserRecord(newUser);
+
+      XFullScreenLoader.stopLoading();
 
       XLoaders.successSnackBar(
         title: "Congratulations",

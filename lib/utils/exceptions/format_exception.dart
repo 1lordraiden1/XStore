@@ -1,5 +1,5 @@
 class XFomratException implements Exception {
-  XFomratException({required this.error});
+  XFomratException({this.error = "Format Error"});
 
   final String error;
 

@@ -39,15 +39,18 @@ dependencies:
   lottie: ^2.6.0
   connectivity_plus: ^5.0.2
   
+  shimmer: ^3.0.0
   url_launcher: ^6.1.14
   flutter_native_splash: ^2.3.5
   smooth_page_indicator: ^1.1.0
+
 
   # Firebase
   firebase_core: ^2.24.2
   firebase_auth: ^4.16.0
   cloud_firestore: ^4.14.0
   google_sign_in: ^6.1.6
+  
  
   
 

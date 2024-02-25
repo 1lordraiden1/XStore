@@ -7,12 +7,28 @@ import 'package:xstore/data/repositories/user/user_repo.dart';
 class UserController extends GetxController {
   UserController get instance => Get.find();
 
+  final profileLoading = false.obs;
+  Rx<UserModel> user = UserModel.empty().obs;
+
   final userRepo = Get.put(UserRepo());
 
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
+    fetchUserRecord();
+  }
+
+  Future<void> fetchUserRecord() async {
+    try {
+      profileLoading.value = true;
+      final user = await userRepo.fetchUserDetails();
+      this.user(user);
+    } catch (e) {
+      user(UserModel.empty());
+    } finally {
+      profileLoading.value = false;
+    }
   }
 
   Future<void> saveUserRecord(UserCredential? userCredential) async {
@@ -35,8 +51,6 @@ class UserController extends GetxController {
 
         await userRepo.saveUserRecord(user);
       }
-
-      
     } catch (e) {
       XLoaders.warningSnackBar(
           title: "Data not saved", message: "Something went wrong");
