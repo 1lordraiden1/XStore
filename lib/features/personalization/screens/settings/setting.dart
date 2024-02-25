@@ -10,14 +10,13 @@ import 'package:xstore/data/repositories/auth_repo.dart';
 import 'package:xstore/features/personalization/screens/profile/profile.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/sizes.dart';
-import 'package:xstore/utils/helpers/helper_functions.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final dark = XHelperFunctions.isDarkMode(context);
+    // final dark = XHelperFunctions.isDarkMode(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(

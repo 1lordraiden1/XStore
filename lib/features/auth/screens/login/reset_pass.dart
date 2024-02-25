@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xstore/features/auth/controllers/forget_pass/forget_pass_conroller.dart';
 import 'package:xstore/features/auth/screens/login/login.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
@@ -10,12 +11,12 @@ class ResetPassScreen extends StatelessWidget {
       required this.image,
       required this.title,
       required this.email,
-      required this.onPressed,
+      
        
       });
 
   final String image, title, email;
-  final VoidCallback onPressed;
+
 
   @override
   Widget build(BuildContext context) {
@@ -66,10 +67,14 @@ class ResetPassScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: onPressed,
+                  onPressed: () => Get.offAll(() => const LoginScreen()),
                   child: const Text("Confirm"),
                 ),
               ),
+                TextButton(
+                onPressed: () => ForgetPassController.instance.resendPasswordResetEmail(email),
+                child: const Text("Resend Email !"),
+              )
             ],
           ),
         ),
