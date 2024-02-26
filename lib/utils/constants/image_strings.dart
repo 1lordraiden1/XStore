@@ -26,5 +26,10 @@ class XImages {
 
   static const String space = "assets/promos/promo.jpeg";
   static const String space1 = "assets/promos/promo1.jpeg";
-  static const String yasuo = "assets/promos/yasuo.jpeg"; 
+  static const String yasuo = "assets/promos/yasuo.jpeg";
+
+  // animations
+  static const String gLoading = "assets/images/animations/google_loading.json";
+  static const String googleLoading = "assets/images/animations/google.json";
+  static const String googleLoading1 = "assets/images/animations/google1.json";
 }

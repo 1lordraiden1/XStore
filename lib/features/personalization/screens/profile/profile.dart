@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xstore/common/widgets/appbar/appbar.dart';
 import 'package:xstore/common/widgets/images/circular_image.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/features/personalization/controllers/user_controller.dart';
+import 'package:xstore/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:xstore/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
@@ -53,7 +55,7 @@ class ProfileScreen extends StatelessWidget {
               XProfileMenu(
                 title: "Name",
                 value: controller.user.value.fullName,
-                onPressed: () {},
+                onPressed: () => Get.to(() => const ChangeName()),
               ),
 
               XProfileMenu(
@@ -97,7 +99,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => controller.deleteAccountWarningPopup(),
                   child: const Text(
                     "Delete Account",
                     style: TextStyle(color: Colors.red),
