@@ -32,14 +32,13 @@ class XHomeAppBarWidget extends StatelessWidget {
               return const XShimmerEffect(width: 80, height: 15);
             } else {
               return Text(
-              controller.instance.user.value.fullName,
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineSmall!
-                  .apply(color: XColors.white),
-            );
+                controller.user.value.fullName,
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall!
+                    .apply(color: XColors.white),
+              );
             }
-            
           }),
         ],
       ),

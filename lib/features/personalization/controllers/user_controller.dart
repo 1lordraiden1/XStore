@@ -5,7 +5,7 @@ import 'package:xstore/data/repositories/user/user_model.dart';
 import 'package:xstore/data/repositories/user/user_repo.dart';
 
 class UserController extends GetxController {
-  UserController get instance => Get.find();
+  static UserController get instance => Get.find();
 
   final profileLoading = false.obs;
   Rx<UserModel> user = UserModel.empty().obs;

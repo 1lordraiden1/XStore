@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xstore/common/widgets/appbar/appbar.dart';
 import 'package:xstore/common/widgets/images/circular_image.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
+import 'package:xstore/features/personalization/controllers/user_controller.dart';
 import 'package:xstore/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
@@ -11,6 +12,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       appBar: const XAppBar(
         showBackArrow: true,
@@ -48,9 +50,14 @@ class ProfileScreen extends StatelessWidget {
                 height: XSizes.spaceBtwItems,
               ),
 
-              const XProfileMenu(title: "Name", value: "Mahmoud Ali"),
+              XProfileMenu(
+                title: "Name",
+                value: controller.user.value.fullName,
+                onPressed: () {},
+              ),
 
-              const XProfileMenu(title: "Username", value: "Mahmoud_Ali"),
+              XProfileMenu(
+                  title: "Username", value: controller.user.value.username),
 
               const SizedBox(
                 height: XSizes.spaceBtwItems,
@@ -65,13 +72,16 @@ class ProfileScreen extends StatelessWidget {
                 height: XSizes.spaceBtwItems,
               ),
 
-              const XProfileMenu(title: "User ID", value: "5451"),
+              XProfileMenu(title: "User ID", value: controller.user.value.id),
 
-              const XProfileMenu(
-                  title: "Email", value: "Mahmoud_Ali@gmail.com"),
+              XProfileMenu(title: "Email", value: controller.user.value.email),
 
-              const XProfileMenu(
-                  title: "Phone Number", value: "+2011-124-420-54"),
+              XProfileMenu(
+                title: "Phone Number",
+                value: (controller.user.value.phoneNumber != '')
+                    ? controller.user.value.phoneNumber
+                    : "Not added",
+              ),
 
               const XProfileMenu(title: "Gender", value: "Male"),
 
