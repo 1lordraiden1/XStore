@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:xstore/data/repositories/auth_repo.dart';
 import 'package:xstore/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:xstore/utils/exceptions/firebase_exceptions.dart';
@@ -115,6 +119,28 @@ class UserRepo extends GetxController {
       //_db.collection("Users").doc(user.id).set(user.toJson());
 
       await _db.collection("Users").doc(userId).delete();
+    } on FirebaseAuthException catch (e) {
+      throw XFirebaseAuthException(e.code);
+    } on FirebaseException catch (e) {
+      throw XFirebaseException(error: e.code);
+    } on FormatException catch (_) {
+      throw XFomratException();
+    } on PlatformException catch (e) {
+      throw XPlatformException(error: e);
+    } catch (e) {
+      throw "Something went wrong, Please try again";
+    }
+  }
+
+  // Upload Image
+  Future<String> uploadImage(String path, XFile image) async {
+    try {
+      //_db.collection("Users").doc(user.id).set(user.toJson());
+
+      final ref = FirebaseStorage.instance.ref(path).child(image.name);
+      await ref.putFile(File(image.path));
+      final url = await ref.getDownloadURL();
+      return url;
     } on FirebaseAuthException catch (e) {
       throw XFirebaseAuthException(e.code);
     } on FirebaseException catch (e) {

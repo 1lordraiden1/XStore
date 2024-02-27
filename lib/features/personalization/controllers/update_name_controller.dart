@@ -31,7 +31,7 @@ class UpdateNameController extends GetxController {
     try {
       XFullScreenLoader.openLoadingDialog(
         "Updating data...",
-        XImages.onBoardingImage3,
+        XImages.gLoading,
       );
 
       final isConnected = await NetworkManager.instance.isConnected();

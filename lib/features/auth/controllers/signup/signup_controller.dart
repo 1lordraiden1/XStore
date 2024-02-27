@@ -31,7 +31,7 @@ class SignupController extends GetxController {
       // Start Loading
       XFullScreenLoader.openLoadingDialog(
         "Processing...",
-        XImages.onBoardingImage3,
+        XImages.gLoading,
       );
 
       // Check Internet Connectivity

@@ -33,7 +33,7 @@ class LoginController extends GetxController {
 
       XFullScreenLoader.openLoadingDialog(
         "Logging you in...",
-        XImages.onBoardingImage2,
+        XImages.gLoading,
       );
 
       // Check Connectivity
@@ -87,7 +87,7 @@ class LoginController extends GetxController {
       // Start
       XFullScreenLoader.openLoadingDialog(
         "Logging you in...",
-        XImages.onBoardingImage3,
+        XImages.googleLoading,
       );
 
       // Check Connection
