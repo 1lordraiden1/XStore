@@ -49,9 +49,7 @@ class XCircularImage extends StatelessWidget {
                 )
               : Image(
                   fit: fit,
-                  image: isNetworkImg
-                      ? NetworkImage(image)
-                      : AssetImage(image) as ImageProvider,
+                  image: AssetImage(image),
                   color: overlayColor,
                 ),
         ),

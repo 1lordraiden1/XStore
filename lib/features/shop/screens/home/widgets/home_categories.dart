@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xstore/common/widgets/image_text/vertical_image_text.dart';
+import 'package:xstore/features/shop/screens/shop/widgets/sup_categories.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
@@ -23,10 +25,11 @@ class XHomeCategories extends StatelessWidget {
           );
         },
         itemBuilder: (_, index) {
-          return const XVerticalImageText(
+          return XVerticalImageText(
             image: XImages.darkAppLogo,
             textColor: XColors.white,
             title: "Clothes",
+            onTap: () => Get.to(() => const SubCategoriesScreen()),
           );
         },
       ),

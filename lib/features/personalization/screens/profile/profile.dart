@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:xstore/common/shimmer/shimmer_effect.dart';
 import 'package:xstore/common/widgets/appbar/appbar.dart';
 import 'package:xstore/common/widgets/images/circular_image.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
@@ -35,24 +33,21 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     Obx(
                       () {
-                        return controller.imageUploading.value
-                            ? const XShimmerEffect(
-                                width: 80,
-                                height: 80,
-                                radius: 80,
-                              )
-                            : XCircularImage(
-                                width: 80,
-                                height: 80,
-                                image:
-                                    controller.user.value.profilePicture != ''
-                                        ? controller.user.value.profilePicture
-                                        : XImages.facebook,
-                              );
+                        final networkImage =
+                            controller.user.value.profilePicture;
+                        final image = networkImage.isNotEmpty
+                            ? networkImage
+                            : XImages.facebook;
+                        return XCircularImage(
+                          width: 80,
+                          height: 80,
+                          image: image,
+                          isNetworkImg: networkImage.isNotEmpty,
+                        );
                       },
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () => controller.uploadUserProfilePicture(),
                       child: const Text("Change Profile Picture"),
                     ),
                   ],
