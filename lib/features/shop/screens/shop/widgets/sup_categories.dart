@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:xstore/common/widgets/appbar/appbar.dart';
+import 'package:xstore/common/widgets/products/product_cards/product_card_horizontal.dart';
 import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
@@ -38,6 +40,18 @@ class SubCategoriesScreen extends StatelessWidget {
                   ),
                   const SizedBox(
                     height: XSizes.spaceBtwItems / 2,
+                  ),
+                  SizedBox(
+                    height: 120,
+                    child: ListView.separated(
+                      itemCount: 6,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) =>
+                          const XProductCardHorizontal(),
+                      separatorBuilder: (context, index) => const SizedBox(
+                        width: XSizes.spaceBtwItems,
+                      ),
+                    ),
                   ),
                 ],
               ),

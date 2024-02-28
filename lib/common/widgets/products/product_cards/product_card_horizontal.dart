@@ -4,6 +4,7 @@ import 'package:xstore/common/widgets/icons/brand_title_icon.dart';
 import 'package:xstore/common/widgets/icons/circular_icon.dart';
 import 'package:xstore/common/widgets/shapes/containers/rounded_container.dart';
 import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';
+import 'package:xstore/common/widgets/texts/product_price.dart';
 import 'package:xstore/common/widgets/texts/product_text_title.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
@@ -23,7 +24,7 @@ class XProductCardHorizontal extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [XShadowStyle.horizontalProductShadow],
         borderRadius: BorderRadius.circular(XSizes.productImageRadius),
-        color: dark ? XColors.darkenGrey : XColors.white,
+        color: dark ? XColors.darkenGrey : XColors.lightContainer,
       ),
       child: Row(
         children: [
@@ -79,13 +80,13 @@ class XProductCardHorizontal extends StatelessWidget {
 
           // Details
 
-          const SizedBox(
+          SizedBox(
             width: 172,
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: XSizes.sm),
-                  child: Column(
+            child: Padding(
+              padding: EdgeInsets.only(top: XSizes.sm, left: XSizes.sm),
+              child: Column(
+                children: [
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       XProductTitleText(
@@ -100,8 +101,36 @@ class XProductCardHorizontal extends StatelessWidget {
                       ),
                     ],
                   ),
-                ),
-              ],
+                  const Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Flexible(child: XProductPrice(price: "189.99")),
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: XColors.dark,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(XSizes.cardRadiusMd),
+                            bottomRight: Radius.circular(
+                              XSizes.productImageRadius,
+                            ),
+                          ),
+                        ),
+                        child: const SizedBox(
+                          width: XSizes.iconLg * 1.2,
+                          height: XSizes.iconLg * 1.2,
+                          child: Center(
+                            child: Icon(
+                              Iconsax.add,
+                              color: XColors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ],
