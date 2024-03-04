@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:xstore/common/widgets/appbar/appbar.dart';
 import 'package:xstore/common/widgets/products/product_cards/product_card_horizontal.dart';
 import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';
@@ -36,15 +37,16 @@ class SubCategoriesScreen extends StatelessWidget {
                 children: [
                   XSectionHeading(
                     title: "T-shirts",
+                    showActionButton: true,
                     onPressed: () {},
                   ),
                   const SizedBox(
                     height: XSizes.spaceBtwItems / 2,
                   ),
                   SizedBox(
-                    height: 120,
+                    height: 135,
                     child: ListView.separated(
-                      itemCount: 6,
+                      itemCount: 4,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) =>
                           const XProductCardHorizontal(),

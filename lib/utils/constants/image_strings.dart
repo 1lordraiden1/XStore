@@ -32,4 +32,22 @@ class XImages {
   static const String gLoading = "assets/images/animations/google_loading.json";
   static const String googleLoading = "assets/images/animations/google.json";
   static const String googleLoading1 = "assets/images/animations/google1.json";
+
+  // Categories
+
+  static const String clothes1 =
+      'assets/icons/categories/icons8-t-shirt-48.png';
+  static const String books = 'assets/icons/categories/icons8-books-48.png';
+  static const String cosmetics =
+      'assets/icons/categories/icons8-cosmetics-48.png';
+  static const String furniture =
+      'assets/icons/categories/icons8-furniture-48.png';
+  static const String mobiles =
+      'assets/icons/categories/icons8-multiple-devices-50.png';
+  static const String electronics =
+      'assets/icons/categories/icons8-power-off-button-48.png';
+  static const String sports = 'assets/icons/categories/icons8-sport-48.png';
+  static const String electroWhite =
+      'assets/icons/categories/icons8-power-off-button-48-white.png';
+  static const String tv = 'assets/icons/categories/icons8-tv-48.png';
 }

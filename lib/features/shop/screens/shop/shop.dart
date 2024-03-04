@@ -6,6 +6,7 @@ import 'package:xstore/common/widgets/grid/grid_layout.dart';
 import 'package:xstore/common/widgets/shapes/containers/search_container.dart';
 import 'package:xstore/common/widgets/tabbar/tabbar.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
+import 'package:xstore/features/shop/controllers/category_contoller.dart';
 import 'package:xstore/features/shop/screens/home/widgets/cart_count.dart';
 import 'package:xstore/features/shop/screens/shop/widgets/category_tab.dart';
 import 'package:xstore/utils/constants/colors.dart';
@@ -18,8 +19,9 @@ class ShopScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = XHelperFunctions.isDarkMode(context);
+    final categories = CategoryController.instance.featuredCategories;
     return DefaultTabController(
-      length: 5,
+      length: categories.length,
       child: Scaffold(
         appBar: XAppBar(
           title: Text(
@@ -72,26 +74,29 @@ class ShopScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                bottom: const XTabbar(
-                  tabs: [
-                    Text("Clothes"),
-                    Text("Clothes"),
-                    Text("Clothes"),
-                    Text("Clothes"),
-                    Text("Clothes"),
-                  ],
+                bottom: XTabbar(
+                  tabs: categories
+                      .map(
+                        (category) => Tab(
+                          child: Text(
+                            category.name,
+                            //style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                        ),
+                      )
+                      .toList(),
                 ),
               ),
             ];
           },
-          body: const TabBarView(
-            children: [
-              XCategoryTab(),
-              XCategoryTab(),
-              XCategoryTab(),
-              XCategoryTab(),
-              XCategoryTab(),
-            ],
+          body: TabBarView(
+            children: categories
+                .map(
+                  (category) => XCategoryTab(
+                    category: category,
+                  ),
+                )
+                .toList(),
           ),
         ),
       ),

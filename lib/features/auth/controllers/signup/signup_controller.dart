@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xstore/common/widgets/loaders/loaders.dart';
-import 'package:xstore/data/repositories/auth_repo.dart';
+import 'package:xstore/data/auth/auth_repo.dart';
 import 'package:xstore/data/repositories/user/user_model.dart';
 import 'package:xstore/data/repositories/user/user_repo.dart';
 import 'package:xstore/features/auth/controllers/network/network_manager.dart';

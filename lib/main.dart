@@ -4,7 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:xstore/app.dart';
-import 'package:xstore/data/repositories/auth_repo.dart';
+import 'package:xstore/data/auth/auth_repo.dart';
 import 'package:xstore/firebase_options.dart';
 
 Future<void> main() async {

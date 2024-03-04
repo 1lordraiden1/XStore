@@ -8,8 +8,8 @@ import 'package:xstore/utils/helpers/helper_functions.dart';
 class XCircularImage extends StatelessWidget {
   const XCircularImage({
     super.key,
-    required this.width,
-    required this.height,
+    this.width = 56,
+    this.height = 56,
     this.padding = XSizes.sm,
     required this.image,
     this.isNetworkImg = false,

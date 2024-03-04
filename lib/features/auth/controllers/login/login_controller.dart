@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:xstore/common/widgets/loaders/loaders.dart';
-import 'package:xstore/data/repositories/auth_repo.dart';
+import 'package:xstore/data/auth/auth_repo.dart';
 import 'package:xstore/features/auth/controllers/network/network_manager.dart';
 import 'package:xstore/features/personalization/controllers/user_controller.dart';
 import 'package:xstore/utils/constants/image_strings.dart';

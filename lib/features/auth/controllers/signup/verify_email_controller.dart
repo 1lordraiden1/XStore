@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:xstore/common/widgets/loaders/loaders.dart';
 import 'package:xstore/common/widgets/success.dart';
-import 'package:xstore/data/repositories/auth_repo.dart';
+import 'package:xstore/data/auth/auth_repo.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
 
 class VerifyEmailController extends GetxController {

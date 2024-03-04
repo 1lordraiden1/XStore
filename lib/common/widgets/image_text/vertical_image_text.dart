@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xstore/common/widgets/images/circular_image.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 import 'package:xstore/utils/helpers/helper_functions.dart';
@@ -8,14 +9,16 @@ class XVerticalImageText extends StatelessWidget {
     super.key,
     required this.image,
     required this.title,
-    required this.textColor,
+    this.textColor = XColors.white,
     this.backgroundColor,
     this.onTap,
+    this.isNetworkImg = true,
   });
 
   final String image, title;
   final Color textColor;
   final Color? backgroundColor;
+  final bool isNetworkImg;
   final void Function()? onTap;
 
   @override
@@ -35,10 +38,13 @@ class XVerticalImageText extends StatelessWidget {
               borderRadius: BorderRadius.circular(100),
             ),
             child: Center(
-              child: Image(
-                image: AssetImage(image),
-                fit: BoxFit.cover,
-                color: dark ? XColors.white : XColors.dark,
+              child: XCircularImage(
+                image: image,
+                fit: BoxFit.fitWidth,
+                padding: XSizes.sm * 1.4,
+                isNetworkImg: isNetworkImg,
+                overlayColor: dark ? XColors.white : XColors.dark,
+                backgroundColor: backgroundColor,
               ),
             ),
           ),

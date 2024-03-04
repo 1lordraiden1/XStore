@@ -6,8 +6,9 @@ import 'package:xstore/common/widgets/shapes/containers/primary_header_container
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/common/widgets/tiles/setting_tile.dart';
 import 'package:xstore/common/widgets/tiles/user_tile.dart';
-import 'package:xstore/data/repositories/auth_repo.dart';
+import 'package:xstore/data/auth/auth_repo.dart';
 import 'package:xstore/features/personalization/screens/profile/profile.dart';
+import 'package:xstore/features/personalization/screens/settings/upload_screen.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
@@ -102,10 +103,11 @@ class SettingScreen extends StatelessWidget {
                   const SizedBox(
                     height: XSizes.spaceBtwItems,
                   ),
-                  const XSettingMenuTile(
+                  XSettingMenuTile(
                     icon: Iconsax.document_upload,
                     title: "Load Data",
                     subtitle: "Upload data to Cloud",
+                    onTap: () => Get.to(() => const UploadOptionsScreen()),
                   ),
                   XSettingMenuTile(
                     icon: Iconsax.location,
