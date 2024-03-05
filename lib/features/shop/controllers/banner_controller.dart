@@ -10,6 +10,12 @@ class BannerController extends GetxController {
   final carousalCurrentIndex = 0.obs;
   final RxList<BannerModel> banners = <BannerModel>[].obs;
 
+  @override
+  void onInit() {
+    super.onInit();
+    fetchBanners();
+  }
+
   void updatePageIndicator(index) {
     carousalCurrentIndex.value = index;
   }

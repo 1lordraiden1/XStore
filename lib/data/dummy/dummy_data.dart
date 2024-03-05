@@ -1,9 +1,8 @@
-import 'package:xstore/data/repositories/user/user_model.dart';
 import 'package:xstore/features/shop/models/banner_model.dart';
 import 'package:xstore/features/shop/models/category_model.dart';
-import 'package:xstore/utils/constants/enums.dart';
+import 'package:xstore/features/shop/models/product_controller.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
-import 'package:xstore/utils/constants/routes.dart';
+import 'package:xstore/utils/routers/routes.dart';
 
 class XDummyData {
   static final List<BannerModel> banners = [
@@ -14,25 +13,27 @@ class XDummyData {
     ),
     BannerModel(
       imageUrl: XImages.banner2,
-      targetScreen: XRoutes.search,
+      targetScreen: XRoutes.store,
       active: true,
     ),
     BannerModel(
       imageUrl: XImages.banner3,
-      targetScreen: XRoutes.search,
+      targetScreen: XRoutes.cart,
       active: true,
     ),
     BannerModel(
       imageUrl: XImages.banner5,
-      targetScreen: XRoutes.search,
+      targetScreen: XRoutes.productDetail,
       active: true,
     ),
     BannerModel(
       imageUrl: XImages.banner11,
       targetScreen: XRoutes.search,
-      active: true,
+      active: false,
     ),
   ];
+
+  static final List<ProductModel> products = [];
 /*
   static final UserModel user = UserModel(
     id: '35',
