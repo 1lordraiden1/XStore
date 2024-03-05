@@ -59,4 +59,9 @@ class XImages {
   static const String electroWhite =
       'assets/icons/categories/icons8-power-off-button-48-white.png';
   static const String tv = 'assets/icons/categories/icons8-tv-48.png';
+
+  // Products
+
+  static const String googleWT =
+      'assets/images/products/google_white_tshirt.png';
 }

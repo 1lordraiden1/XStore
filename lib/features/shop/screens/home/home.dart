@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:xstore/common/widgets/grid/grid_layout.dart';
 import 'package:xstore/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:xstore/common/widgets/shapes/containers/primary_header_container.dart';
 import 'package:xstore/common/widgets/shapes/containers/search_container.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
+import 'package:xstore/features/shop/controllers/product_controller.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
@@ -17,6 +19,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -86,7 +89,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   XGridLayout(
                     itemBuilder: (_, index) => const XProductCardVertical(),
-                    itemCount: 5,
+                    itemCount: controller.featuredProducts.length,
                   ),
                 ],
               ),

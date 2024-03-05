@@ -1,6 +1,9 @@
 import 'package:xstore/features/shop/models/banner_model.dart';
+import 'package:xstore/features/shop/models/brand_model.dart';
 import 'package:xstore/features/shop/models/category_model.dart';
-import 'package:xstore/features/shop/models/product_controller.dart';
+import 'package:xstore/features/shop/models/product_attributes_model.dart';
+import 'package:xstore/features/shop/models/product_model.dart';
+import 'package:xstore/features/shop/models/product_variation_model.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/routers/routes.dart';
 
@@ -33,7 +36,47 @@ class XDummyData {
     ),
   ];
 
-  static final List<ProductModel> products = [];
+  static final List<ProductModel> products = [
+    ProductModel(
+      id: '001',
+      title: 'Google White T-Shirt',
+      stock: 20,
+      price: 49.99,
+      thumnail: XImages.googleWT,
+      productType: '',
+      isFeatured: true,
+      description: 'Google White T-Shirt',
+      brand: BrandModel(
+        id: '1',
+        image: XImages.google,
+        name: 'Googel',
+        productsCount: 50,
+        isFeatured: true,
+      ),
+      salePrice: 30,
+      sku: 'GWT1234',
+      categoryId: '1',
+      productAttributes: [
+        ProductAttributesModel(
+            name: 'Color', values: ['White', 'Black', 'Red']),
+        ProductAttributesModel(
+            name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
+      ],
+      productVariations: [
+        ProductVariationsModel(
+          id: '1',
+          stock: 20,
+          price: 49.99,
+          salePrice: 44.99,
+          image: XImages.googleWT,
+          attributesValues: {
+            'Color': 'White',
+            'Size': 'EU 34',
+          },
+        ),
+      ],
+    ),
+  ];
 /*
   static final UserModel user = UserModel(
     id: '35',
