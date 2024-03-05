@@ -33,6 +33,15 @@ class XImages {
   static const String googleLoading = "assets/images/animations/google.json";
   static const String googleLoading1 = "assets/images/animations/google1.json";
 
+  // Banners
+
+  static const String banner1 = "assets/images/banners/banner1.png";
+  static const String banner11 = "assets/images/banners/banner11.png";
+
+  static const String banner2 = "assets/images/banners/banner2.png";
+  static const String banner3 = "assets/images/banners/banner3.png";
+  static const String banner5 = "assets/images/banners/banner5.png";
+
   // Categories
 
   static const String clothes1 =

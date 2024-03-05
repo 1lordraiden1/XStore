@@ -75,9 +75,9 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   const XPromoSlider(
                     banners: [
-                      XImages.yasuo,
-                      XImages.space,
-                      XImages.space1,
+                      XImages.banner11,
+                      XImages.banner5,
+                      XImages.banner3,
                     ],
                   ),
                   const SizedBox(

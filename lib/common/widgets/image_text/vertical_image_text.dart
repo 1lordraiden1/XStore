@@ -34,7 +34,8 @@ class XVerticalImageText extends StatelessWidget {
             width: 56,
             padding: const EdgeInsets.all(XSizes.sm),
             decoration: BoxDecoration(
-              color: backgroundColor ?? (dark ? XColors.black : XColors.white),
+              color:
+                  backgroundColor ?? (dark ? XColors.black : XColors.white),
               borderRadius: BorderRadius.circular(100),
             ),
             child: Center(
@@ -48,13 +49,13 @@ class XVerticalImageText extends StatelessWidget {
               ),
             ),
           ),
-
+    
           const SizedBox(
             height: XSizes.spaceBtwItems / 2,
           ),
-
+    
           // Text
-
+    
           Text(
             title,
             style: Theme.of(context)

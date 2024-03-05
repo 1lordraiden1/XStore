@@ -1,12 +1,39 @@
 import 'package:xstore/data/repositories/user/user_model.dart';
+import 'package:xstore/features/shop/models/banner_model.dart';
 import 'package:xstore/features/shop/models/category_model.dart';
 import 'package:xstore/utils/constants/enums.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
+import 'package:xstore/utils/constants/routes.dart';
 
 class XDummyData {
-  /*
-  static final List<BannerModel> banners = [];
-
+  static final List<BannerModel> banners = [
+    BannerModel(
+      imageUrl: XImages.banner1,
+      targetScreen: XRoutes.search,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: XImages.banner2,
+      targetScreen: XRoutes.search,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: XImages.banner3,
+      targetScreen: XRoutes.search,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: XImages.banner5,
+      targetScreen: XRoutes.search,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: XImages.banner11,
+      targetScreen: XRoutes.search,
+      active: true,
+    ),
+  ];
+/*
   static final UserModel user = UserModel(
     id: '35',
     username: '',
