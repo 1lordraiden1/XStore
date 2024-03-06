@@ -34,6 +34,26 @@ class ProductRepo extends GetxController {
     }
   }
 
+  Future<List<ProductModel>> getFeaturedProducts() async {
+    try {
+      final snapshot = await _db
+          .collection('Products')
+          .where('IsFeatured', isEqualTo: true)
+          .limit(4)
+          .get();
+
+      return snapshot.docs
+          .map((doc) => ProductModel.fromSnapshot(doc))
+          .toList();
+    } on FirebaseException catch (e) {
+      throw XFirebaseException(error: e.code);
+    } on PlatformException catch (e) {
+      throw XPlatformException(error: e);
+    } catch (e) {
+      throw "Something went wrong, Please try again";
+    }
+  }
+
   Future<void> uploadDummyData(List<ProductModel> products) async {
     try {
       final storage = Get.put(XFirebaseStorageService());
@@ -49,7 +69,7 @@ class ProductRepo extends GetxController {
         product.thumnail = url;
 
         if (product.images != null && product.images!.isNotEmpty) {
-          List<String> imageUrl = [];
+          List<String> imagesUrl = [];
 
           for (var image in product.images!) {
             final assetImage = await storage.getImageDataFromAssets(image);
@@ -59,16 +79,31 @@ class ProductRepo extends GetxController {
               assetImage,
               image,
             );
-            product.thumnail = url; //
+            imagesUrl.add(url);
+          }
+          product.images!.clear();
+          product.images!.addAll(imagesUrl);
+        }
+        /*
+        if (product.productType == ProductType.variable.toString()) {
+          for (var variation in product.productVariations!) {
+            final assetImage =
+                await storage.getImageDataFromAssets(variation.image);
+
+            final url = await storage.uploadImageData(
+              'Products/Images',
+              assetImage,
+              variation.image,
+            );
+            variation.image = url;
           }
         }
+        */
 
-        await _db.collection('Products').doc(product.id).set(
-              product.toJson(),
-            );
+        await _db.collection('Products').doc(product.id).set(product.toJson());
       }
     } catch (e) {
-      throw "Something went wrong, Please try again";
+      throw e.toString();
     }
   }
 }

@@ -40,6 +40,25 @@ class ProductModel {
     this.productVariations,
   });
 
+  static ProductModel empty() => ProductModel(
+        id: '',
+        title: '',
+        stock: 0,
+        price: 0.0,
+        thumnail: '',
+        productType: '',
+        brand: BrandModel.empty(),
+        categoryId: '',
+        date: DateTime.now(),
+        description: '',
+        images: [],
+        isFeatured: false,
+        sku: '',
+        salePrice: 0.0,
+        productAttributes: [],
+        productVariations: [],
+      );
+
   toJson() {
     return {
       'Id': id,
@@ -68,6 +87,7 @@ class ProductModel {
       DocumentSnapshot<Map<String, dynamic>> document) {
     final data = document.data()!;
 
+    if (document.data() == null) return ProductModel.empty();
     return ProductModel(
       id: document.id,
       title: data['Title'] ?? '',

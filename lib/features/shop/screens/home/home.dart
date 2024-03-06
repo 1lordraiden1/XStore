@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:xstore/common/shimmer/vertical_shimmer.dart';
 import 'package:xstore/common/widgets/grid/grid_layout.dart';
 import 'package:xstore/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:xstore/common/widgets/shapes/containers/primary_header_container.dart';
@@ -87,9 +89,26 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: XSizes.spaceBtwSections,
                   ),
-                  XGridLayout(
-                    itemBuilder: (_, index) => const XProductCardVertical(),
-                    itemCount: controller.featuredProducts.length,
+                  Obx(
+                    () {
+                      if (controller.isLoading.value) {
+                        return const XVerticalProductShimmer();
+                      }
+
+                      if (controller.featuredProducts.isEmpty) {
+                        return Center(
+                          child: Text(
+                            "No Data Found",
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        );
+                      }
+
+                      return XGridLayout(
+                        itemBuilder: (_, index) => const XProductCardVertical(),
+                        itemCount: controller.featuredProducts.length,
+                      );
+                    },
                   ),
                 ],
               ),
