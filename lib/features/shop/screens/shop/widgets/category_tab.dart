@@ -4,6 +4,7 @@ import 'package:xstore/common/widgets/grid/grid_layout.dart';
 import 'package:xstore/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/features/shop/models/category_model.dart';
+import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
@@ -38,7 +39,9 @@ class XCategoryTab extends StatelessWidget {
               ),
               XGridLayout(
                 itemCount: 4,
-                itemBuilder: (_, index) => const XProductCardVertical(),
+                itemBuilder: (_, index) => XProductCardVertical(
+                  product: ProductModel.empty(),
+                ),
               ),
             ],
           ),

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:xstore/common/shimmer/shimmer_effect.dart';
 import 'package:xstore/common/widgets/grid/grid_layout.dart';

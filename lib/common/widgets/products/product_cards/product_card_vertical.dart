@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:xstore/common/widgets/icons/brand_title_icon.dart';
@@ -7,21 +9,32 @@ import 'package:xstore/common/widgets/shapes/containers/rounded_container.dart';
 import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';
 import 'package:xstore/common/widgets/texts/product_price.dart';
 import 'package:xstore/common/widgets/texts/product_text_title.dart';
+import 'package:xstore/features/shop/controllers/product_controller.dart';
+import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/features/shop/screens/product_details/prodcut_detail.dart';
 import 'package:xstore/utils/constants/colors.dart';
-import 'package:xstore/utils/constants/image_strings.dart';
+import 'package:xstore/utils/constants/enums.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 import 'package:xstore/utils/helpers/helper_functions.dart';
 import 'package:xstore/utils/theme/custom/shadow.dart';
 
 class XProductCardVertical extends StatelessWidget {
-  const XProductCardVertical({super.key});
+  const XProductCardVertical({super.key, required this.product});
 
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController()); // instance
+
+    final salePercentage =
+        controller.calculateSalePercentage(product.price, product.salePrice);
     final dark = XHelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () => Get.to(() => const ProductDetailScreen()),
+      onTap: () => Get.to(
+        () => ProductDetailScreen(
+          product: product,
+        ),
+      ),
       child: Container(
         //width: 180,
         height: 180,
@@ -41,8 +54,8 @@ class XProductCardVertical extends StatelessWidget {
               backgroundColor: dark ? XColors.dark : XColors.light,
               child: Stack(
                 children: [
-                  const XRoundedImage(
-                    imageUrl: XImages.google,
+                  XRoundedImage(
+                    imageUrl: product.thumnail,
                   ),
 
                   // Tag
@@ -57,7 +70,7 @@ class XProductCardVertical extends StatelessWidget {
                         vertical: XSizes.xs,
                       ),
                       child: Text(
-                        "-20%",
+                        '$salePercentage%',
                         style: Theme.of(context).textTheme.labelLarge!.apply(
                               color: XColors.black,
                             ),
@@ -85,20 +98,20 @@ class XProductCardVertical extends StatelessWidget {
 
             // Details
 
-            const Padding(
-              padding: EdgeInsets.all(XSizes.sm),
+            Padding(
+              padding: const EdgeInsets.all(XSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   XProductTitleText(
-                    title: "White T-Shirt",
+                    title: product.title,
                     smallSize: true,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: XSizes.spaceBtwItems / 2,
                   ),
                   XBrandTitleVerfiedIcon(
-                    title: "T-Shirts",
+                    title: product.brand!.name,
                   ),
                 ],
               ),
@@ -108,9 +121,29 @@ class XProductCardVertical extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: XSizes.sm),
-                  child: XProductPrice(price: '49.99'),
+                Flexible(
+                  child: Column(
+                    children: [
+                      if (product.productType ==
+                              ProductType.single.toString() &&
+                          product.salePrice > 0)
+                        Padding(
+                          padding: const EdgeInsets.only(left: XSizes.sm),
+                          child: Text(
+                            product.price.toString(),
+                            style:
+                                Theme.of(context).textTheme.labelMedium!.apply(
+                                      decoration: TextDecoration.lineThrough,
+                                    ),
+                          ),
+                        ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: XSizes.sm),
+                        child: XProductPrice(
+                            price: controller.getProductPrice(product)),
+                      ),
+                    ],
+                  ),
                 ),
                 Container(
                   decoration: const BoxDecoration(

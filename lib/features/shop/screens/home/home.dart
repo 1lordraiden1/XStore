@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:xstore/common/shimmer/vertical_shimmer.dart';
 import 'package:xstore/common/widgets/grid/grid_layout.dart';
@@ -9,7 +8,6 @@ import 'package:xstore/common/widgets/shapes/containers/primary_header_container
 import 'package:xstore/common/widgets/shapes/containers/search_container.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/features/shop/controllers/product_controller.dart';
-import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
 import 'widgets/home_appbar.dart';
@@ -98,14 +96,16 @@ class HomeScreen extends StatelessWidget {
                       if (controller.featuredProducts.isEmpty) {
                         return Center(
                           child: Text(
-                            "No Data Found",
+                            "No Data Found!",
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                         );
                       }
 
                       return XGridLayout(
-                        itemBuilder: (_, index) => const XProductCardVertical(),
+                        itemBuilder: (_, index) => XProductCardVertical(
+                          product: controller.featuredProducts[index],
+                        ),
                         itemCount: controller.featuredProducts.length,
                       );
                     },

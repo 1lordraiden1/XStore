@@ -7,6 +7,7 @@ import 'package:xstore/common/widgets/shapes/containers/rounded_container.dart';
 import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';
 import 'package:xstore/common/widgets/texts/product_price.dart';
 import 'package:xstore/common/widgets/texts/product_text_title.dart';
+import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/features/shop/screens/product_details/prodcut_detail.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
@@ -14,13 +15,19 @@ import 'package:xstore/utils/constants/sizes.dart';
 import 'package:xstore/utils/helpers/helper_functions.dart';
 
 class XProductCardHorizontal extends StatelessWidget {
-  const XProductCardHorizontal({super.key});
+  const XProductCardHorizontal({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final dark = XHelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () => Get.to(() => const ProductDetailScreen()),
+      onTap: () => Get.to(
+        () => ProductDetailScreen(
+          product: product,
+        ),
+      ),
       child: Container(
         width: 310,
         //height: 200,
