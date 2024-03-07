@@ -94,6 +94,7 @@ class HomeScreen extends StatelessWidget {
                       }
 
                       if (controller.featuredProducts.isEmpty) {
+                        // delete all products case
                         return Center(
                           child: Text(
                             "No Data Found!",

@@ -37,6 +37,7 @@ class XDummyData {
   ];
 
   static final List<ProductModel> products = [
+    
     ProductModel(
       id: '001',
       title: 'Google White T-Shirt',
@@ -49,12 +50,129 @@ class XDummyData {
       brand: BrandModel(
         id: '1',
         image: XImages.google,
-        name: 'Googel',
+        name: 'Google',
         productsCount: 50,
         isFeatured: true,
       ),
       salePrice: 30,
       sku: 'GWT1234',
+      categoryId: '1',
+      productAttributes: [
+        ProductAttributesModel(
+            name: 'Color', values: ['White', 'Black', 'Red']),
+        ProductAttributesModel(
+            name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
+      ],
+      productVariations: [
+        ProductVariationsModel(
+          id: '1',
+          stock: 20,
+          price: 49.99,
+          salePrice: 44.99,
+          image: XImages.googleWT,
+          attributesValues: {
+            'Color': 'White',
+            'Size': 'EU 34',
+          },
+        ),
+      ],
+    ),
+    ProductModel(
+      id: '002',
+      title: 'Google Black T-Shirt',
+      stock: 20,
+      price: 49.99,
+      thumnail: XImages.googleWT,
+      productType: '',
+      isFeatured: true,
+      description: 'Google Black T-Shirt',
+      brand: BrandModel(
+        id: '1',
+        image: XImages.google,
+        name: 'Google',
+        productsCount: 50,
+        isFeatured: true,
+      ),
+      salePrice: 30,
+      sku: 'GBT1234',
+      categoryId: '1',
+      productAttributes: [
+        ProductAttributesModel(
+            name: 'Color', values: ['White', 'Black', 'Red']),
+        ProductAttributesModel(
+            name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
+      ],
+      productVariations: [
+        ProductVariationsModel(
+          id: '1',
+          stock: 20,
+          price: 49.99,
+          salePrice: 44.99,
+          image: XImages.googleWT,
+          attributesValues: {
+            'Color': 'White',
+            'Size': 'EU 34',
+          },
+        ),
+      ],
+    ),
+    ProductModel(
+      id: '003',
+      title: 'Google Red T-Shirt',
+      stock: 20,
+      price: 49.99,
+      thumnail: XImages.googleWT,
+      productType: '',
+      isFeatured: true,
+      description: 'Google Red T-Shirt',
+      brand: BrandModel(
+        id: '1',
+        image: XImages.google,
+        name: 'Google',
+        productsCount: 50,
+        isFeatured: true,
+      ),
+      salePrice: 30,
+      sku: 'GRT1234',
+      categoryId: '1',
+      productAttributes: [
+        ProductAttributesModel(
+            name: 'Color', values: ['White', 'Black', 'Red']),
+        ProductAttributesModel(
+            name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
+      ],
+      productVariations: [
+        ProductVariationsModel(
+          id: '1',
+          stock: 20,
+          price: 49.99,
+          salePrice: 44.99,
+          image: XImages.googleWT,
+          attributesValues: {
+            'Color': 'White',
+            'Size': 'EU 34',
+          },
+        ),
+      ],
+    ),
+    ProductModel(
+      id: '004',
+      title: 'Google Blue T-Shirt',
+      stock: 20,
+      price: 49.99,
+      thumnail: XImages.googleWT,
+      productType: '',
+      isFeatured: true,
+      description: 'Google Blue T-Shirt',
+      brand: BrandModel(
+        id: '1',
+        image: XImages.google,
+        name: 'Google',
+        productsCount: 50,
+        isFeatured: true,
+      ),
+      salePrice: 30,
+      sku: 'GBT1234',
       categoryId: '1',
       productAttributes: [
         ProductAttributesModel(

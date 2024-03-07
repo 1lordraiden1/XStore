@@ -4,6 +4,7 @@ import 'package:xstore/common/widgets/appbar/appbar.dart';
 import 'package:xstore/common/widgets/icons/circular_icon.dart';
 import 'package:xstore/common/widgets/shapes/curved_edges/curved_edges_widget.dart';
 import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';
+import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
@@ -12,10 +13,10 @@ import 'package:xstore/utils/helpers/helper_functions.dart';
 class XProductImageSlider extends StatelessWidget {
   const XProductImageSlider({
     super.key,
-    
+    required this.product,
   });
 
-  
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {

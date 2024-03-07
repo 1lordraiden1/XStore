@@ -47,6 +47,14 @@ class ProductModel {
         price: 0.0,
         thumnail: '',
         productType: '',
+      );
+/* ProductModel(
+        id: '',
+        title: '',
+        stock: 0,
+        price: 0.0,
+        thumnail: '',
+        productType: '',
         brand: BrandModel.empty(),
         categoryId: '',
         date: DateTime.now(),
@@ -57,8 +65,7 @@ class ProductModel {
         salePrice: 0.0,
         productAttributes: [],
         productVariations: [],
-      );
-
+      ); */
   toJson() {
     return {
       'Id': id,
@@ -77,7 +84,7 @@ class ProductModel {
       'ProductAttributes': productAttributes != null
           ? productAttributes!.map((e) => e.toJson()).toList()
           : [],
-      'ProductVariationss': productVariations != null
+      'ProductVariations': productVariations != null
           ? productVariations!.map((e) => e.toJson()).toList()
           : [],
     };
@@ -85,9 +92,8 @@ class ProductModel {
 
   factory ProductModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document) {
-    final data = document.data()!;
-
     if (document.data() == null) return ProductModel.empty();
+    final data = document.data()!;
     return ProductModel(
       id: document.id,
       title: data['Title'] ?? '',

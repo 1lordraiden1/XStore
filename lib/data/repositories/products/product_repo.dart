@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:xstore/data/services/firebase_services.dart';
 import 'package:xstore/features/shop/models/product_model.dart';
+import 'package:xstore/utils/constants/enums.dart';
 import 'package:xstore/utils/exceptions/firebase_exceptions.dart';
 import 'package:xstore/utils/exceptions/platform_exception.dart';
 
@@ -30,7 +31,7 @@ class ProductRepo extends GetxController {
     } on PlatformException catch (e) {
       throw XPlatformException(error: e);
     } catch (e) {
-      throw "Something went wrong, Please try again";
+      throw "Something went wrong, Getting All Products";
     }
   }
 
@@ -50,7 +51,7 @@ class ProductRepo extends GetxController {
     } on PlatformException catch (e) {
       throw XPlatformException(error: e);
     } catch (e) {
-      throw "Something went wrong, Please try again";
+      throw "Something went wrong, Getting Featured Products";
     }
   }
 
@@ -84,7 +85,7 @@ class ProductRepo extends GetxController {
           product.images!.clear();
           product.images!.addAll(imagesUrl);
         }
-        /*
+
         if (product.productType == ProductType.variable.toString()) {
           for (var variation in product.productVariations!) {
             final assetImage =
@@ -98,7 +99,6 @@ class ProductRepo extends GetxController {
             variation.image = url;
           }
         }
-        */
 
         await _db.collection('Products').doc(product.id).set(product.toJson());
       }

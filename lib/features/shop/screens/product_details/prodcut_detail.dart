@@ -23,7 +23,7 @@ class ProductDetailScreen extends StatelessWidget {
           children: [
             // Product Image Slider
 
-            const XProductImageSlider(),
+            XProductImageSlider(product: product),
 
             // Details
 

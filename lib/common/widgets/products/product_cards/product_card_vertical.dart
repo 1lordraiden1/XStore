@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:xstore/common/widgets/icons/brand_title_icon.dart';
@@ -24,7 +22,7 @@ class XProductCardVertical extends StatelessWidget {
   final ProductModel product;
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ProductController()); // instance
+    final controller = ProductController.instance; // instance
 
     final salePercentage =
         controller.calculateSalePercentage(product.price, product.salePrice);
@@ -49,13 +47,14 @@ class XProductCardVertical extends StatelessWidget {
             // Thumnail, Buttons and Tags
 
             XRoundedContainer(
-              height: 180,
+              height: 161,
               padding: const EdgeInsets.all(XSizes.sm),
               backgroundColor: dark ? XColors.dark : XColors.light,
               child: Stack(
                 children: [
                   XRoundedImage(
                     imageUrl: product.thumnail,
+                    isNetworkImage: true,
                   ),
 
                   // Tag
@@ -131,10 +130,10 @@ class XProductCardVertical extends StatelessWidget {
                           padding: const EdgeInsets.only(left: XSizes.sm),
                           child: Text(
                             product.price.toString(),
-                            style:
-                                Theme.of(context).textTheme.labelMedium!.apply(
-                                      decoration: TextDecoration.lineThrough,
-                                    ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium!
+                                .apply(decoration: TextDecoration.lineThrough),
                           ),
                         ),
                       Padding(

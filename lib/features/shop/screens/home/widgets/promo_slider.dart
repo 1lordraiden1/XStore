@@ -6,7 +6,6 @@ import 'package:xstore/common/widgets/shapes/containers/circular_container.dart'
 import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';
 import 'package:xstore/features/shop/controllers/banner_controller.dart';
 import 'package:xstore/utils/constants/colors.dart';
-import 'package:xstore/utils/routers/routes.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
 class XPromoSlider extends StatelessWidget {

@@ -5,6 +5,7 @@ import 'package:xstore/common/widgets/tiles/setting_tile.dart';
 import 'package:xstore/data/dummy/dummy_data.dart';
 import 'package:xstore/data/repositories/banners/banners_repo.dart';
 import 'package:xstore/data/repositories/categories/category_repo.dart';
+import 'package:xstore/data/repositories/products/product_repo.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
 class UploadOptionsScreen extends StatelessWidget {
@@ -14,8 +15,9 @@ class UploadOptionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final initCategories = XDummyData.categories;
     final initBanners = XDummyData.banners;
+    final initProducts = XDummyData.products;
     return Scaffold(
-      appBar: XAppBar(
+      appBar: const XAppBar(
         title: Text("Upload Options"),
       ),
       body: Column(
@@ -34,6 +36,15 @@ class UploadOptionsScreen extends StatelessWidget {
             title: "Upload Banners",
             subtitle: "Manage Data",
             onTap: () => BannerRepo.instance.uploadDummyData(initBanners),
+          ),
+          const SizedBox(
+            height: XSizes.spaceBtwItems,
+          ),
+          XSettingMenuTile(
+            icon: Iconsax.shopping_bag,
+            title: "Upload Products",
+            subtitle: "Manage Data",
+            onTap: () => ProductRepo.instance.uploadDummyData(initProducts),
           ),
         ],
       ),

@@ -5,10 +5,11 @@ import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/utils/constants/enums.dart';
 
 class ProductController extends GetxController {
-  ProductController get instance => Get.find();
+  static ProductController get instance => Get.find();
 
   @override
   void onInit() {
+    //fetchAllProducts();
     fetchFeaturedProducts();
     super.onInit();
   }
@@ -18,6 +19,34 @@ class ProductController extends GetxController {
   final RxList<ProductModel> featuredProducts = <ProductModel>[].obs;
 
   final _productRepo = Get.put(ProductRepo());
+
+  Future<void> fetchAllProducts() async {
+    try {
+      // Show loader
+      isLoading.value = true;
+
+      // Fetch Products
+      final products = await _productRepo.getAllProducts();
+
+      // Update the products list
+      allProducts.assignAll(products);
+
+      // Filter featured products
+      /*
+      featuredProducts.assignAll(
+        products
+            .where(
+              (product) => product.isFeatured! && product.id.isEmpty,
+            )
+            .take(4)
+            .toList(),
+      );*/
+    } catch (e) {
+      XLoaders.errorSnackBar(title: "Oh no!", message: e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
 
   Future<void> fetchFeaturedProducts() async {
     try {
@@ -60,11 +89,11 @@ class ProductController extends GetxController {
             variation.salePrice > 0 ? variation.salePrice : variation.price;
 
         if (priceToConsider < smallestPrice) {
-          smallestPrice - priceToConsider;
+          smallestPrice = priceToConsider;
         }
 
         if (priceToConsider > largetsPrice) {
-          largetsPrice - priceToConsider;
+          largetsPrice = priceToConsider;
         }
       }
 
