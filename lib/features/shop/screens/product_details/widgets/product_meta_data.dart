@@ -4,14 +4,18 @@ import 'package:xstore/common/widgets/images/circular_image.dart';
 import 'package:xstore/common/widgets/shapes/containers/rounded_container.dart';
 import 'package:xstore/common/widgets/texts/product_price.dart';
 import 'package:xstore/common/widgets/texts/product_text_title.dart';
+import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/enums.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
 class XProductMetaData extends StatelessWidget {
-  const XProductMetaData({super.key});
+  const XProductMetaData({
+    super.key, required this.product,
+  });
 
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -41,7 +41,9 @@ class ProductDetailScreen extends StatelessWidget {
                     numberOfRates: '999',
                   ),
 
-                  const XProductMetaData(),
+                  XProductMetaData(
+                    product: product,
+                  ),
 
                   const XProductAttributes(),
 

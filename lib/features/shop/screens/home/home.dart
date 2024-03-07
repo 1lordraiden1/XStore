@@ -7,7 +7,7 @@ import 'package:xstore/common/widgets/products/product_cards/product_card_vertic
 import 'package:xstore/common/widgets/shapes/containers/primary_header_container.dart';
 import 'package:xstore/common/widgets/shapes/containers/search_container.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
-import 'package:xstore/features/shop/controllers/product_controller.dart';
+import 'package:xstore/features/shop/controllers/product/product_controller.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
 import 'widgets/home_appbar.dart';

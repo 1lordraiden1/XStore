@@ -7,7 +7,7 @@ import 'package:xstore/common/widgets/shapes/containers/rounded_container.dart';
 import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';
 import 'package:xstore/common/widgets/texts/product_price.dart';
 import 'package:xstore/common/widgets/texts/product_text_title.dart';
-import 'package:xstore/features/shop/controllers/product_controller.dart';
+import 'package:xstore/features/shop/controllers/product/product_controller.dart';
 import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/features/shop/screens/product_details/prodcut_detail.dart';
 import 'package:xstore/utils/constants/colors.dart';
