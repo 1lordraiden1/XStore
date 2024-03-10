@@ -5,6 +5,7 @@ import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/features/shop/screens/product_details/widgets/bottom_add_to_cart.dart';
 import 'package:xstore/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:xstore/features/shop/screens/product_details/widgets/product_meta_data.dart';
+import 'package:xstore/utils/constants/enums.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
 import 'widgets/product_image_slider.dart';
@@ -45,11 +46,15 @@ class ProductDetailScreen extends StatelessWidget {
                     product: product,
                   ),
 
-                  const XProductAttributes(),
+                  if (product.productType == ProductType.variable.toString())
+                    XProductAttributes(
+                      product: product,
+                    ),
 
-                  const SizedBox(
-                    height: XSizes.spaceBtwSections,
-                  ),
+                  if (product.productType == ProductType.variable.toString())
+                    const SizedBox(
+                      height: XSizes.spaceBtwSections,
+                    ),
 
                   SizedBox(
                     width: double.infinity,
@@ -67,8 +72,8 @@ class ProductDetailScreen extends StatelessWidget {
                     height: XSizes.spaceBtwItems,
                   ),
 
-                  const ReadMoreText(
-                    "This is the description of the product and it can go upto max 4 lines This is the description of the product and it can go upto max 4 lines This is the description of the product and it can go upto max 4 lines",
+                  ReadMoreText(
+                    product.description ?? '',
                     trimLength: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' Show more',

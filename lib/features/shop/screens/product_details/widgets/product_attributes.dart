@@ -4,16 +4,19 @@ import 'package:xstore/common/widgets/shapes/containers/rounded_container.dart';
 import 'package:xstore/common/widgets/texts/product_price.dart';
 import 'package:xstore/common/widgets/texts/product_text_title.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
+import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 import 'package:xstore/utils/helpers/helper_functions.dart';
 
 class XProductAttributes extends StatelessWidget {
-  const XProductAttributes({super.key});
+  const XProductAttributes({super.key, required this.product});
 
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     final dark = XHelperFunctions.isDarkMode(context);
+    
     return Column(
       children: [
         XRoundedContainer(
@@ -80,64 +83,35 @@ class XProductAttributes extends StatelessWidget {
           height: XSizes.spaceBtwItems,
         ),
         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const XSectionHeading(title: "Colors"),
-            const SizedBox(
-              height: XSizes.spaceBtwItems,
-            ),
-            Wrap(
-              spacing: 8,
-              children: [
-                XChoiceChip(
-                  selected: true,
-                  text: "Red",
-                  onSelected: (value) {},
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: product.productAttributes!
+              .map(
+                (attribute) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    XSectionHeading(title: attribute.name ?? ''),
+                    const SizedBox(
+                      height: XSizes.spaceBtwItems,
+                    ),
+                    Wrap(
+                      spacing: 8,
+                      children: attribute.values!
+                          .map(
+                            (value) => XChoiceChip(
+                              selected: false,
+                              text: value,
+                              onSelected: (value) {},
+                            ),
+                          )
+                          .toList(),
+                    )
+                  ],
                 ),
-                XChoiceChip(
-                  selected: false,
-                  text: "Blue",
-                  onSelected: (value) {},
-                ),
-                XChoiceChip(
-                  selected: false,
-                  text: "Green",
-                  onSelected: (value) {},
-                ),
-              ],
-            )
-          ],
+              )
+              .toList(),
         ),
         const SizedBox(
           height: XSizes.spaceBtwItems,
-        ),
-        Column(
-          children: [
-            const XSectionHeading(title: "Sizes"),
-            const SizedBox(
-              height: XSizes.spaceBtwItems,
-            ),
-            Wrap(
-              spacing: 8,
-              children: [
-                XChoiceChip(
-                  selected: false,
-                  text: "EU 34",
-                  onSelected: (value) {},
-                ),
-                XChoiceChip(
-                  selected: true,
-                  text: "EU 36",
-                  onSelected: (value) {},
-                ),
-                XChoiceChip(
-                  selected: false,
-                  text: 'EU 56',
-                  onSelected: (value) {},
-                ),
-              ],
-            ),
-          ],
         ),
       ],
     );
