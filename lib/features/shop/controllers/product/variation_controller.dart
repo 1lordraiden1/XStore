@@ -9,7 +9,7 @@ class VariationController extends GetxController {
   Rx<ProductVariationsModel> selectedVariation =
       ProductVariationsModel.empty().obs;
 
-  void onAttributesAvailablityInVariation(
+  void onAttributesAvailabilityInVariation(
       List<ProductVariationsModel> variation, String attributeName) {}
 
   void getProductVariationStockStatus() {

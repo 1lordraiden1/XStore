@@ -72,7 +72,7 @@ class XProductAttributes extends StatelessWidget {
 
               const XProductTitleText(
                 title:
-                    "This is the description of the product and it can go upto max 4 lines",
+                    "This is the description of the product and it can go up to max 4 lines",
                 smallSize: true,
                 maxLines: 4,
               ),
