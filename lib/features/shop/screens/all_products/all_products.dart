@@ -7,6 +7,7 @@ import 'package:xstore/features/shop/controllers/product/all_products_controller
 import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/features/shop/screens/all_products/sortable_products.dart';
 import 'package:xstore/utils/constants/sizes.dart';
+import 'package:xstore/utils/helpers/cloud_helper_functions.dart';
 
 class AllProducts extends StatelessWidget {
   const AllProducts({super.key, required this.title, this.query, this.futureMethod,});
@@ -25,17 +26,9 @@ class AllProducts extends StatelessWidget {
         builder: (context, snapshot) {
 
           const loader = XVerticalProductShimmer();
+          final widget = XCloudHelperFunctions.checkMultiRecordState(snapshot: snapshot,loader: loader);
 
-          if(snapshot.connectionState == ConnectionState.waiting){
-            return loader;
-          }
-
-          if(!snapshot.hasData || snapshot.data == null || snapshot.data!.isEmpty){
-            return const Center(child: Text("No Data Found"),);
-          }
-          if (snapshot.hasError){
-            return const Center(child: Text("Something went wrong"),);
-          }
+          if (widget != null) return widget;
 
           final products = snapshot.data!;
           return XSortableProducts(products: products,);

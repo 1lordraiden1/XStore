@@ -27,7 +27,7 @@ class XSortableProducts extends StatelessWidget {
         ),
         const SizedBox(height: XSizes.spaceBtwSections,),
 
-        Obx(()=> XGridLayout(itemCount: 4, itemBuilder: (_, index)=> XProductCardVertical(product: controller.products[index],),)),
+        Obx(()=> XGridLayout(itemCount: controller.products.length, itemBuilder: (_, index)=> XProductCardVertical(product: controller.products[index],),)),
       ],
     );
   }
