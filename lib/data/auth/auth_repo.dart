@@ -58,9 +58,9 @@ class AuthenticationRepository extends GetxController {
     } on FirebaseException catch (e) {
       throw XFirebaseException(error: e.code);
     } on FormatException catch (e) {
-      throw XFomratException(error: e.message);
+      throw XFomratException(error: e.source);
     } on PlatformException catch (e) {
-      throw XPlatformException(error: e);
+      throw PlatformException(code: e.code); //XPlatformException(error: e);
     } catch (e) {
       throw "Something went wrong, Please try again";
     }
@@ -87,7 +87,7 @@ class AuthenticationRepository extends GetxController {
     } on FormatException catch (e) {
       throw XFomratException(error: e.message);
     } on PlatformException catch (e) {
-      throw XPlatformException(error: e);
+      throw PlatformException(code: e.code); //XPlatformException(error: e);
     } catch (e) {
       throw "Something went wrong, Please try again";
     }
