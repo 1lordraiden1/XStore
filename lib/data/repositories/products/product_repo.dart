@@ -18,9 +18,9 @@ class ProductRepo extends GetxController {
 
   final _db = FirebaseFirestore.instance;
 
-  Future<List<ProductModel>> getAllProducts() async {
+  Future<List<ProductModel>> getAllFeaturedProducts() async {
     try {
-      final snapshot = await _db.collection('Products').get();
+      final snapshot = await _db.collection('Products').where('IsFeatured', isEqualTo: true).get();
 
       final list =
           snapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
@@ -34,6 +34,24 @@ class ProductRepo extends GetxController {
       throw "Something went wrong, Getting All Products";
     }
   }
+
+  Future<List<ProductModel>> getProductsByQuery(Query query) async {
+    try {
+      final querySnapshot = await query.get();
+      final List<ProductModel> list =
+          querySnapshot.docs.map((doc) => ProductModel.fromQuerySnapshot(doc)).toList();
+
+      return list;
+    } on FirebaseException catch (e) {
+      throw XFirebaseException(error: e.code);
+    } on PlatformException catch (e) {
+      throw XPlatformException(error: e);
+    } catch (e) {
+      throw "Something went wrong, Getting All Products";
+    }
+  }
+
+
 
   Future<List<ProductModel>> getFeaturedProducts() async {
     try {

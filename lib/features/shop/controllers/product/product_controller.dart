@@ -20,34 +20,22 @@ class ProductController extends GetxController {
 
   final _productRepo = Get.put(ProductRepo());
 
-  Future<void> fetchAllProducts() async {
+  Future<List<ProductModel>> fetchAllFeaturedProducts() async {
     try {
-      // Show loader
-      isLoading.value = true;
-
-      // Fetch Products
-      final products = await _productRepo.getAllProducts();
+    
+      final products = await _productRepo.getAllFeaturedProducts();
 
       // Update the products list
-      allProducts.assignAll(products);
+      return products;
 
-      // Filter featured products
-      /*
-      featuredProducts.assignAll(
-        products
-            .where(
-              (product) => product.isFeatured! && product.id.isEmpty,
-            )
-            .take(4)
-            .toList(),
-      );*/
+
     } catch (e) {
       XLoaders.errorSnackBar(title: "Oh no!", message: e.toString());
-    } finally {
-      isLoading.value = false;
-    }
+      return [];
+    } 
   }
 
+  
   Future<void> fetchFeaturedProducts() async {
     try {
       // Show loader

@@ -8,6 +8,7 @@ import 'package:xstore/common/widgets/shapes/containers/primary_header_container
 import 'package:xstore/common/widgets/shapes/containers/search_container.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/features/shop/controllers/product/product_controller.dart';
+import 'package:xstore/features/shop/screens/all_products/all_products.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
 import 'widgets/home_appbar.dart';
@@ -80,9 +81,10 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: XSizes.spaceBtwSections,
                   ),
-                  const XSectionHeading(
+                 XSectionHeading(
                     showActionButton: true,
                     title: "Popular products",
+                    onPressed: () => Get.to(()=>  AllProducts(title: 'Popular Products', futureMethod: controller.fetchAllFeaturedProducts(),),),
                   ),
                   const SizedBox(
                     height: XSizes.spaceBtwSections,

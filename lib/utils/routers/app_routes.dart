@@ -8,7 +8,8 @@ import 'package:xstore/features/personalization/screens/settings/setting.dart';
 import 'package:xstore/features/shop/screens/cart/cart.dart';
 import 'package:xstore/features/shop/screens/home/home.dart';
 import 'package:xstore/features/shop/screens/shop/shop.dart';
-import 'package:xstore/features/shop/screens/wishlist.dart';
+
+import 'package:xstore/features/shop/screens/wishlist/wishlist.dart';
 import 'package:xstore/utils/routers/routes.dart';
 
 class AppRoutes {
@@ -27,7 +28,7 @@ class AppRoutes {
     ),
     GetPage(
       name: XRoutes.favorites,
-      page: () => const WishlistScreen(),
+      page: () => const FavoriteScreen(),
     ),
     GetPage(
       name: XRoutes.settings,
