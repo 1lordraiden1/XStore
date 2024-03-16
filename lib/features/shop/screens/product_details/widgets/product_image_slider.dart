@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:xstore/common/widgets/appbar/appbar.dart';
 import 'package:xstore/common/widgets/icons/circular_icon.dart';
+import 'package:xstore/common/widgets/products/favorite_icon/favorite_icon.dart';
 import 'package:xstore/common/widgets/shapes/curved_edges/curved_edges_widget.dart';
 import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';
 import 'package:xstore/features/shop/controllers/product/images_controller.dart';
@@ -105,10 +106,7 @@ class XProductImageSlider extends StatelessWidget {
             const XAppBar(
               showBackArrow: true,
               actions: [
-                XCircularIcon(
-                  icon: Iconsax.heart5,
-                  color: Colors.red,
-                ),
+                XFavoriteIcon(),
               ],
             ),
           ],

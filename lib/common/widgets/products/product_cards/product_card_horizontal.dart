@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:xstore/common/widgets/icons/brand_title_icon.dart';
-import 'package:xstore/common/widgets/icons/circular_icon.dart';
+import 'package:xstore/common/widgets/products/favorite_icon/favorite_icon.dart';
 import 'package:xstore/common/widgets/shapes/containers/rounded_container.dart';
 import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';
 import 'package:xstore/common/widgets/texts/product_price.dart';
@@ -80,10 +80,7 @@ class XProductCardHorizontal extends StatelessWidget {
                   const Positioned(
                     top: 0,
                     right: 0,
-                    child: XCircularIcon(
-                      icon: Iconsax.heart5,
-                      color: Colors.red,
-                    ),
+                    child: XFavoriteIcon(),
                   ),
                 ],
               ),

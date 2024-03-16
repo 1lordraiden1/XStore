@@ -14,6 +14,7 @@ import 'package:xstore/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:xstore/utils/exceptions/firebase_exceptions.dart';
 import 'package:xstore/utils/exceptions/format_exception.dart';
 import 'package:xstore/utils/exceptions/platform_exception.dart';
+import 'package:xstore/utils/local_storage/storage_utility.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -34,6 +35,8 @@ class AuthenticationRepository extends GetxController {
     final user = _auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
+        // Initialize User Storage
+        await XLocalStorage.init(user.uid);
         Get.offAll(() => const NavigationMenu());
       } else {
         Get.offAll(() => VerifyEmail(email: _auth.currentUser?.email));
