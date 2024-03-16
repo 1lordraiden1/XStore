@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:xstore/data/services/firebase_services.dart';
 import 'package:xstore/features/shop/models/brand_model.dart';
-import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/utils/exceptions/firebase_exceptions.dart';
 import 'package:xstore/utils/exceptions/platform_exception.dart';
 
@@ -28,6 +27,37 @@ class BrandRepo extends GetxController {
       throw "Something went wrong while fetching Brands";
     }
   }
+
+  Future<List<BrandModel>> getCategoryBrands({required String categoryId}) async {
+    try {
+      // Query to get all docs where categoryId matches the provided one
+      QuerySnapshot brandCategoryQuery = await _db
+          .collection('BrandCategory')
+          .where('categoryId', isEqualTo: categoryId)
+          .get();
+
+      // Extract brandIds from documents
+      List<String> brandIds = brandCategoryQuery.docs.map((doc) => doc['brandId'] as String ).toList();
+
+      // Query to get all docs where brandId is in the brandIds
+      final brandQuery = await _db.collection('Brands').where(FieldPath.documentId, whereIn: brandIds).limit(2).get();
+
+      List<BrandModel> brands = brandQuery.docs.map((doc) => BrandModel.fromSnapshot(doc)).toList();
+
+      return brands;
+
+
+    } on FirebaseException catch (e) {
+      throw XFirebaseException(error: e.message!);
+    } on PlatformException catch (e) {
+      throw XPlatformException(error: e);
+    } catch (e) {
+      throw "Something went wrong while fetching Brands";
+    }
+  }
+
+
+
 
   Future<void> uploadDummyData(List<BrandModel> brands) async {
     try {

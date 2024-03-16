@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
 import 'package:xstore/common/widgets/loaders/loaders.dart';
 import 'package:xstore/data/repositories/categories/category_repo.dart';
+import 'package:xstore/data/repositories/products/product_repo.dart';
 import 'package:xstore/features/shop/models/category_model.dart';
+import 'package:xstore/features/shop/models/product_model.dart';
 
 class CategoryController extends GetxController {
   static CategoryController get instance => Get.find();
@@ -42,6 +44,21 @@ class CategoryController extends GetxController {
       XLoaders.errorSnackBar(title: "Oh no!", message: e.toString());
     } finally {
       isLoading.value = false;
+    }
+  }
+
+
+  // Get Category of sub products
+
+  Future<List<ProductModel>> getCategoryProducts({required String categoryId, int limit = 4}) async {
+    try {
+      final products =
+          await ProductRepo.instance.getCategoryProducts(categoryId : categoryId, limit: limit);
+
+      return products;
+    } catch (e) {
+      XLoaders.errorSnackBar(message: e.toString());
+      return [];
     }
   }
 }

@@ -20,7 +20,10 @@ class ProductRepo extends GetxController {
 
   Future<List<ProductModel>> getAllFeaturedProducts() async {
     try {
-      final snapshot = await _db.collection('Products').where('IsFeatured', isEqualTo: true).get();
+      final snapshot = await _db
+          .collection('Products')
+          .where('IsFeatured', isEqualTo: true)
+          .get();
 
       final list =
           snapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
@@ -38,8 +41,9 @@ class ProductRepo extends GetxController {
   Future<List<ProductModel>> getProductsByQuery(Query query) async {
     try {
       final querySnapshot = await query.get();
-      final List<ProductModel> list =
-          querySnapshot.docs.map((doc) => ProductModel.fromQuerySnapshot(doc)).toList();
+      final List<ProductModel> list = querySnapshot.docs
+          .map((doc) => ProductModel.fromQuerySnapshot(doc))
+          .toList();
 
       return list;
     } on FirebaseException catch (e) {
@@ -50,8 +54,6 @@ class ProductRepo extends GetxController {
       throw "Something went wrong, Getting All Products";
     }
   }
-
-
 
   Future<List<ProductModel>> getFeaturedProducts() async {
     try {
@@ -125,7 +127,6 @@ class ProductRepo extends GetxController {
     }
   }
 
-
   // Products For Brands
   Future<List<ProductModel>> getBrandProducts(
       {required String brandId, int limit = -1}) async {
@@ -141,10 +142,37 @@ class ProductRepo extends GetxController {
               .limit(limit)
               .get();
 
+      final products = querySnapshot.docs
+          .map((doc) => ProductModel.fromSnapshot(doc))
+          .toList();
 
-              final products = querySnapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+      return products;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 
-              return products;
+  // Products for Categories
+
+  Future<List<ProductModel>> getCategoryProducts(
+      {required String categoryId, int limit = -1}) async {
+    try {
+      final querySnapshot = limit == -1
+          ? await _db
+              .collection('ProductCategory')
+              .where('Category.id', isEqualTo: categoryId)
+              .get()
+          : await _db
+              .collection('ProductCategory')
+              .where('Category.id', isEqualTo: categoryId)
+              .limit(limit)
+              .get();
+
+      final products = querySnapshot.docs
+          .map((doc) => ProductModel.fromSnapshot(doc))
+          .toList();
+
+      return products;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }

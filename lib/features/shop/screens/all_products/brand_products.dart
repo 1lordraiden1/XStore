@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
-import 'package:xstore/common/shimmer/brands_shimmer.dart';
 import 'package:xstore/common/shimmer/vertical_shimmer.dart';
 import 'package:xstore/common/widgets/appbar/appbar.dart';
 import 'package:xstore/common/widgets/brand/brand_card.dart';
-import 'package:xstore/common/widgets/grid/grid_layout.dart';
-import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/features/shop/controllers/product/brand_controller.dart';
 import 'package:xstore/features/shop/models/brand_model.dart';
 import 'package:xstore/features/shop/screens/all_products/sortable_products.dart';
@@ -38,7 +33,7 @@ class BrandProducts extends StatelessWidget {
                 height: XSizes.spaceBtwItems,
               ),
               FutureBuilder(
-                future: brandController.getBrandProducts(brand.id),
+                future: brandController.getBrandProducts(brandId: brand.id),
                 builder: (context, snapshot) {
                   const loader = XVerticalProductShimmer();
                   final widget = XCloudHelperFunctions.checkMultiRecordState(snapshot: snapshot,loader: loader);

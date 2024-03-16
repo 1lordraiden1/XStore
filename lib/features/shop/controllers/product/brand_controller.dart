@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:xstore/common/widgets/loaders/loaders.dart';
 import 'package:xstore/data/repositories/brands/brand_repo.dart';
@@ -40,12 +39,24 @@ class BrandController extends GetxController {
 
   // -- Get Brands For Category
 
+  Future<List<BrandModel>> getCategoryBrands(String categoryId) async {
+    try {
+      final brands =
+          await brandRepo.getCategoryBrands(categoryId: categoryId );
+
+      return brands;
+    } catch (e) {
+      XLoaders.errorSnackBar(message: e.toString());
+      return [];
+    }
+  }
+
   // -- Get Brand Specific Products from your data source
 
-  Future<List<ProductModel>> getBrandProducts(String brandId) async {
+  Future<List<ProductModel>> getBrandProducts({required String brandId, int limit = -1}) async {
     try {
       final products =
-          await ProductRepo.instance.getBrandProducts(brandId: brandId);
+          await ProductRepo.instance.getBrandProducts(brandId: brandId,limit: limit);
 
       return products;
     } catch (e) {
