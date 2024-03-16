@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xstore/common/widgets/brand/brand_card.dart';
 import 'package:xstore/common/widgets/shapes/containers/rounded_container.dart';
+import 'package:xstore/features/shop/models/brand_model.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 import 'package:xstore/utils/helpers/helper_functions.dart';
@@ -24,7 +25,8 @@ class XBrandShowCase extends StatelessWidget {
       child: Column(
         children: [
           // Brand
-          const XBrandCard(
+           XBrandCard(
+            brand: BrandModel.empty(), // Real Brand
             showBorder: false,
           ),
           const SizedBox(

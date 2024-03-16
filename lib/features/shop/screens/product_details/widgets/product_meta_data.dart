@@ -9,7 +9,6 @@ import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/enums.dart';
 import 'package:xstore/utils/constants/sizes.dart';
-import 'package:xstore/utils/helpers/helper_functions.dart';
 
 class XProductMetaData extends StatelessWidget {
   const XProductMetaData({
@@ -25,7 +24,7 @@ class XProductMetaData extends StatelessWidget {
       product.price,
       product.salePrice,
     );
-    final darkMode = XHelperFunctions.isDarkMode(context);
+    //final darkMode = XHelperFunctions.isDarkMode(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -39,7 +38,7 @@ class XProductMetaData extends StatelessWidget {
                 vertical: XSizes.xs,
               ),
               child: Text(
-                "-20%",
+                "-$salePercentage%",
                 style: Theme.of(context).textTheme.labelLarge!.apply(
                       color: XColors.black,
                     ),

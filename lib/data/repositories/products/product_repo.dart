@@ -124,4 +124,29 @@ class ProductRepo extends GetxController {
       throw e.toString();
     }
   }
+
+
+  // Products For Brands
+  Future<List<ProductModel>> getBrandProducts(
+      {required String brandId, int limit = -1}) async {
+    try {
+      final querySnapshot = limit == -1
+          ? await _db
+              .collection('Products')
+              .where('Brand.id', isEqualTo: brandId)
+              .get()
+          : await _db
+              .collection('Products')
+              .where('Brand.id', isEqualTo: brandId)
+              .limit(limit)
+              .get();
+
+
+              final products = querySnapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+
+              return products;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 }

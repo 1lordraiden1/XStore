@@ -22,10 +22,10 @@ class XLoaders {
     );
   }
 
-  static errorSnackBar({required title, required message, duration = 3}) {
+  static errorSnackBar({title = "Oh no!" , required message, duration = 3}) {
     //
     Get.snackbar(
-      title,
+      title ,
       message,
       isDismissible: true,
       shouldIconPulse: true,
