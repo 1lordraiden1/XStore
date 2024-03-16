@@ -55,6 +55,25 @@ class ProductRepo extends GetxController {
     }
   }
 
+  Future<List<ProductModel>> getFavProducts(List<String> productIds) async {
+    try {
+      final snapshot = await _db
+          .collection('Products')
+          .where(FieldPath.documentId, whereIn: productIds)
+          .get();
+
+      return snapshot.docs
+          .map((doc) => ProductModel.fromSnapshot(doc))
+          .toList();
+    } on FirebaseException catch (e) {
+      throw XFirebaseException(error: e.code);
+    } on PlatformException catch (e) {
+      throw XPlatformException(error: e);
+    } catch (e) {
+      throw "Something went wrong, Getting All Products";
+    }
+  }
+
   Future<List<ProductModel>> getFeaturedProducts() async {
     try {
       final snapshot = await _db

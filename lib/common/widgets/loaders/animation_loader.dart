@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/sizes.dart';
+import 'package:xstore/utils/helpers/helper_functions.dart';
 
 class XAnimationLoaderWidget extends StatelessWidget {
   const XAnimationLoaderWidget({
@@ -20,6 +21,7 @@ class XAnimationLoaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = XHelperFunctions.isDarkMode(context);
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -46,7 +48,7 @@ class XAnimationLoaderWidget extends StatelessWidget {
                     child: Text(
                       actionText!,
                       style: Theme.of(context).textTheme.bodyMedium!.apply(
-                            color: XColors.light,
+                            color: dark ? XColors.light : XColors.black,
                           ),
                     ),
                   ),

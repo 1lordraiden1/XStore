@@ -77,10 +77,12 @@ class XProductCardHorizontal extends StatelessWidget {
 
                   // Fav Button
 
-                  const Positioned(
+                  Positioned(
                     top: 0,
                     right: 0,
-                    child: XFavoriteIcon(),
+                    child: XFavoriteIcon(
+                      productId: product.id,
+                    ),
                   ),
                 ],
               ),

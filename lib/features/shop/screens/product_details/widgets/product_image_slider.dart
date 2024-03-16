@@ -103,10 +103,10 @@ class XProductImageSlider extends StatelessWidget {
 
             // Appbar
 
-            const XAppBar(
+             XAppBar(
               showBackArrow: true,
               actions: [
-                XFavoriteIcon(),
+                XFavoriteIcon(productId: product.id,),
               ],
             ),
           ],
