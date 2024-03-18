@@ -7,7 +7,6 @@ import 'package:xstore/common/widgets/products/product_cards/product_card_vertic
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/features/shop/controllers/category_contoller.dart';
 import 'package:xstore/features/shop/models/category_model.dart';
-import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/features/shop/screens/all_products/all_products.dart';
 import 'package:xstore/features/shop/screens/shop/widgets/category_brands.dart';
 import 'package:xstore/utils/constants/sizes.dart';
@@ -37,8 +36,8 @@ class XCategoryTab extends StatelessWidget {
 
               // Products
               FutureBuilder(
-                  future:
-                      controller.getCategoryProducts(categoryId: category.id),
+                  future: controller.getCategoryProducts(
+                      categoryId: category.id, limit: 4),
                   builder: (context, snapshot) {
                     final response =
                         XCloudHelperFunctions.checkMultiRecordState(
@@ -57,7 +56,6 @@ class XCategoryTab extends StatelessWidget {
                               title: category.name,
                               futureMethod: controller.getCategoryProducts(
                                 categoryId: category.id,
-                                limit: -1,
                               ),
                             ),
                           ),

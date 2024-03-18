@@ -78,8 +78,7 @@ class ShopScreen extends StatelessWidget {
                       // Brands
                       Obx(
                         () {
-                          if (brandController.isLoading.value)
-                            return const XBrandsShimmer();
+                          if (brandController.isLoading.value) return const XBrandsShimmer();
 
                           if (brandController.featuredBrands.isEmpty) {
                             return Center(

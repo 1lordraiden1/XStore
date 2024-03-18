@@ -176,24 +176,32 @@ class ProductRepo extends GetxController {
   Future<List<ProductModel>> getCategoryProducts(
       {required String categoryId, int limit = -1}) async {
     try {
-      final querySnapshot = limit == -1
+      QuerySnapshot querySnapshot = limit == -1
           ? await _db
               .collection('ProductCategory')
-              .where('Category.id', isEqualTo: categoryId)
+              .where('categoryId', isEqualTo: categoryId) //category.id
               .get()
           : await _db
               .collection('ProductCategory')
-              .where('Category.id', isEqualTo: categoryId)
+              .where('categoryId', isEqualTo: categoryId)
               .limit(limit)
               .get();
 
-      final products = querySnapshot.docs
+      List<String> productIds =
+          querySnapshot.docs.map((e) => e['productId'] as String).toList();
+
+      final productsQuery = await _db
+          .collection('Products')
+          .where(FieldPath.documentId, whereIn: productIds)
+          .get();
+
+      final products = productsQuery.docs
           .map((doc) => ProductModel.fromSnapshot(doc))
           .toList();
 
       return products;
     } catch (e) {
-      throw 'Something went wrong. Please try again';
+      throw 'Something went wrong. getting category products';
     }
   }
 }
