@@ -45,9 +45,11 @@ class XHomeCategories extends StatelessWidget {
               final category = categoryController.featuredCategories[index];
               return XVerticalImageText(
                 image: category.image,
-                textColor: XColors.white,
+                //textColor: XColors.white,
                 title: category.name,
-                onTap: () => Get.to(() => const SubCategoriesScreen()),
+                onTap: () => Get.to(
+                  () =>  SubCategoriesScreen(category : category),
+                ),
               );
             },
           ),

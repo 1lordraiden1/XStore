@@ -41,7 +41,7 @@ class XLoaders {
     );
   }
 
-  static warningSnackBar({required title, message = '', duration = 3}) {
+  static warningSnackBar({ title = 'Oh Snap!' , message = '', duration = 3}) {
     Get.snackbar(
       title,
       message,

@@ -31,6 +31,18 @@ class CategoryRepo extends GetxController {
 
   // Get sub Categories
 
+  Future<List<CategoryModel>> getSubCategories(String categoryId) async {
+    try {
+     final snapshot = await _db.collection('Categories').where('ParentId', isEqualTo: categoryId).get();
+     final results = snapshot.docs.map((e) => CategoryModel.fromSnapshot(e)).toList();
+     return results;
+    } catch (e) {
+      throw "Something went wrong, Please try again";
+    }
+  }
+
+
+
   // Upload Categories to firestore
   Future<void> uploadDummyData(List<CategoryModel> categories) async {
     try {

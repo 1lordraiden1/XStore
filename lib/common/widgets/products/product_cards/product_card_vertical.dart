@@ -59,6 +59,7 @@ class XProductCardVertical extends StatelessWidget {
 
                   // Tag
 
+                  if (salePercentage != null)
                   Positioned(
                     top: 5,
                     child: XRoundedContainer(
@@ -172,3 +173,5 @@ class XProductCardVertical extends StatelessWidget {
     );
   }
 }
+
+

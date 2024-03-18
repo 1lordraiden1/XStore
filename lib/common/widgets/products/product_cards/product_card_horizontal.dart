@@ -7,9 +7,11 @@ import 'package:xstore/common/widgets/shapes/containers/rounded_container.dart';
 import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';
 import 'package:xstore/common/widgets/texts/product_price.dart';
 import 'package:xstore/common/widgets/texts/product_text_title.dart';
+import 'package:xstore/features/shop/controllers/product/product_controller.dart';
 import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/features/shop/screens/product_details/prodcut_detail.dart';
 import 'package:xstore/utils/constants/colors.dart';
+import 'package:xstore/utils/constants/enums.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 import 'package:xstore/utils/helpers/helper_functions.dart';
@@ -21,6 +23,12 @@ class XProductCardHorizontal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance; // instance
+
+    final salePercentage = controller.calculateSalePercentage(
+      product.price,
+      product.salePrice,
+    );
     final dark = XHelperFunctions.isDarkMode(context);
     return GestureDetector(
       onTap: () => Get.to(
@@ -38,7 +46,7 @@ class XProductCardHorizontal extends StatelessWidget {
         ),
         child: Row(
           children: [
-            // Thumnail
+            // Thumbnail
             XRoundedContainer(
               height: 200,
               //width: 100,
@@ -46,34 +54,36 @@ class XProductCardHorizontal extends StatelessWidget {
               backgroundColor: dark ? XColors.dark : XColors.light,
               child: Stack(
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     width: 100,
                     height: 100,
                     child: XRoundedImage(
-                      imageUrl: XImages.facebook,
+                      isNetworkImage: true,
+                      imageUrl: product.thumnail,
                       applyImageRadius: true,
                     ),
                   ),
 
                   /// -- Sale Tag
-
-                  Positioned(
-                    top: 10,
-                    child: XRoundedContainer(
-                      radius: XSizes.sm,
-                      backgroundColor: XColors.secondary.withOpacity(0.8),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: XSizes.sm,
-                        vertical: XSizes.xs,
-                      ),
-                      child: Text(
-                        "-20%",
-                        style: Theme.of(context).textTheme.labelLarge!.apply(
-                              color: XColors.black,
-                            ),
+                  ///
+                  if (salePercentage != null)
+                    Positioned(
+                      top: 10,
+                      child: XRoundedContainer(
+                        radius: XSizes.sm,
+                        backgroundColor: XColors.secondary.withOpacity(0.8),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: XSizes.sm,
+                          vertical: XSizes.xs,
+                        ),
+                        child: Text(
+                          '$salePercentage%',
+                          style: Theme.of(context).textTheme.labelLarge!.apply(
+                                color: XColors.black,
+                              ),
+                        ),
                       ),
                     ),
-                  ),
 
                   // Fav Button
 
@@ -90,6 +100,59 @@ class XProductCardHorizontal extends StatelessWidget {
 
             // Details
             //const Spacer(),
+
+            // price row =>
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Column(
+                    children: [
+                      if (product.productType ==
+                              ProductType.single.toString() &&
+                          product.salePrice > 0)
+                        Padding(
+                          padding: const EdgeInsets.only(left: XSizes.sm),
+                          child: Text(
+                            product.price.toString(),
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium!
+                                .apply(decoration: TextDecoration.lineThrough),
+                          ),
+                        ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: XSizes.sm),
+                        child: XProductPrice(
+                            price: controller.getProductPrice(product)),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    color: XColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(XSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(
+                        XSizes.productImageRadius,
+                      ),
+                    ),
+                  ),
+                  child: const SizedBox(
+                    width: XSizes.iconLg * 1.2,
+                    height: XSizes.iconLg * 1.2,
+                    child: Center(
+                      child: Icon(
+                        Iconsax.add,
+                        color: XColors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
             SizedBox(
               width: 172,
               //height: 200,
@@ -97,18 +160,18 @@ class XProductCardHorizontal extends StatelessWidget {
                 padding: const EdgeInsets.only(top: XSizes.sm, left: XSizes.sm),
                 child: Column(
                   children: [
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         XProductTitleText(
-                          title: "White Google T-shirt",
+                          title: product.title,
                           smallSize: true,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: XSizes.spaceBtwItems / 2,
                         ),
                         XBrandTitleVerfiedIcon(
-                          title: "Google",
+                          title: product.brand!.name,
                         ),
                       ],
                     ),
