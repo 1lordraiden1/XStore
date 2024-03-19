@@ -4,7 +4,6 @@ import 'package:xstore/features/shop/models/category_model.dart';
 import 'package:xstore/features/shop/models/product_attributes_model.dart';
 import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/features/shop/models/product_variation_model.dart';
-import 'package:xstore/utils/constants/enums.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/routers/routes.dart';
 
@@ -98,6 +97,8 @@ class XDummyData {
           },
         ),
       ],
+      date: DateTime.now(),
+      images: ['', ''],
     ),
     ProductModel(
       id: '002',
@@ -137,6 +138,8 @@ class XDummyData {
           },
         ),
       ],
+      date: DateTime.now(),
+      images: ['', ''],
     ),
     ProductModel(
       id: '003',
@@ -176,6 +179,8 @@ class XDummyData {
           },
         ),
       ],
+      date: DateTime.now(),
+      images: ['', ''],
     ),
     ProductModel(
       id: '004',
@@ -198,9 +203,13 @@ class XDummyData {
       categoryId: '1',
       productAttributes: [
         ProductAttributesModel(
-            name: 'Color', values: ['White', 'Black', 'Red']),
+          name: 'Color',
+          values: ['White', 'Black', 'Red'],
+        ),
         ProductAttributesModel(
-            name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
+          name: 'Size',
+          values: ['EU 30', 'EU 32', 'EU 34'],
+        ),
       ],
       productVariations: [
         ProductVariationsModel(
@@ -214,6 +223,11 @@ class XDummyData {
             'Size': 'EU 34',
           },
         ),
+      ],
+      date: DateTime.now(),
+      images: [
+        '',
+        '',
       ],
     ),
     ProductModel(
@@ -231,9 +245,100 @@ class XDummyData {
         productsCount: 50,
       ),
       categoryId: '6',
-      description: 'Xiaomi Redmi 13C Dual SIM 8GB Ram+256GB ROM (6.74 Inches) (4G)',
+      description:
+          'Xiaomi Redmi 13C Dual SIM 8GB Ram+256GB ROM (6.74 Inches) (4G)',
+      isFeatured: true,
+      salePrice: 10.0,
+      sku: 'XR13C',
+      images: [
+        '',
+        '',
+      ],
+      productAttributes: [
+        ProductAttributesModel(
+          name: 'Color',
+          values: ['White', 'Black'],
+        ),
+      ],
+      productVariations: [
+        ProductVariationsModel(
+          id: '1',
+          stock: 10,
+          price: 179.99,
+          salePrice: 10.0,
+          image: '',
+          attributesValues: {
+            'Color': 'Black',
+          },
+          description:
+              'Xiaomi Redmi 13C Dual SIM 8GB Ram+256GB ROM (6.74 Inches) (4G)',
+          sku: 'XR13CB',
+        ),
+      ],
+      date: DateTime.now(),
+    ),
+    ProductModel(
+      id: '006',
+      title: 'Samsung Galaxy A15',
+      stock: 10,
+      price: 189.99,
+      thumnail: 'assets/images/products/sga15w.png',
+      productType: 'variable',
+      description:
+          'Samsung Galaxy A15 Dual SIM 6GB Ram+128GB ROM (6.5 Inches) (4G LTE) (Light Blue)',
+      brand: BrandModel(
+        id: '5',
+        image: '',
+        name: 'Samsung',
+        isFeatured: true,
+        productsCount: 50,
+      ),
+      categoryId: '6',
+      date: DateTime.now(),
+      images: ['assets/images/products/sga15w.png', 'assets/images/products/sga15b.png'],
+      isFeatured: true,
+      salePrice: 20.0,
+      sku: 'SGA15W',
+      productAttributes: [
+        ProductAttributesModel(
+          name: 'Color',
+          values: ['White', 'Black'],
+        ),
+      ],
+      productVariations: [
+        ProductVariationsModel(
+          id: '1',
+          stock: 10,
+          price: 189.99,
+          salePrice: 20.0,
+          image: 'assets/images/products/sga15w.png',
+          attributesValues: {
+            'Color': 'White',
+          },
+          description:
+              'Samsung Galaxy A15 Dual SIM 6GB Ram+128GB ROM (6.5 Inches) (4G LTE) (Light Blue)',
+          sku: 'SGA15W',
+        ),
+         ProductVariationsModel(
+          id: '2',
+          stock: 10,
+          price: 189.99,
+          salePrice: 20.0,
+          image: 'assets/images/products/sga15b.png',
+          attributesValues: {
+            'Color': 'Black',
+          },
+          description:
+              'Samsung Galaxy A15 Dual SIM 6GB Ram+128GB ROM (6.5 Inches) (4G LTE) (Black)',
+          sku: 'SGA15B',
+
+        ),
+
+      ],
+
     ),
   ];
+
 /*
   static final UserModel user = UserModel(
     id: '35',
@@ -341,6 +446,13 @@ class XDummyData {
       image: XImages.clothes,
       isFeatured: true,
       parentId: '1',
+    ),
+    CategoryModel(
+      id: '10',
+      name: 'Mobiles',
+      image: XImages.mobiles,
+      isFeatured: true,
+      parentId: '6',
     ),
   ];
 }
