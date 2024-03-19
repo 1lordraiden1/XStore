@@ -4,6 +4,7 @@ import 'package:xstore/features/shop/models/category_model.dart';
 import 'package:xstore/features/shop/models/product_attributes_model.dart';
 import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/features/shop/models/product_variation_model.dart';
+import 'package:xstore/utils/constants/enums.dart';
 import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/routers/routes.dart';
 
@@ -37,7 +38,6 @@ class XDummyData {
   ];
 
   static final List<ProductModel> products = [
-    
     ProductModel(
       id: '001',
       title: 'Google White T-Shirt',
@@ -73,6 +73,28 @@ class XDummyData {
           attributesValues: {
             'Color': 'White',
             'Size': 'EU 34',
+          },
+        ),
+        ProductVariationsModel(
+          id: '2',
+          stock: 20,
+          price: 49.99,
+          salePrice: 44.99,
+          image: XImages.googleWT,
+          attributesValues: {
+            'Color': 'Black',
+            'Size': 'EU 34',
+          },
+        ),
+        ProductVariationsModel(
+          id: '3',
+          stock: 10,
+          price: 49.99,
+          salePrice: 44.99,
+          image: XImages.googleWT,
+          attributesValues: {
+            'Color': 'Red',
+            'Size': 'EU 32',
           },
         ),
       ],
@@ -161,7 +183,7 @@ class XDummyData {
       stock: 20,
       price: 49.99,
       thumnail: XImages.googleWT,
-      productType: '',
+      productType: 'single',
       isFeatured: true,
       description: 'Google Blue T-Shirt',
       brand: BrandModel(
@@ -193,6 +215,23 @@ class XDummyData {
           },
         ),
       ],
+    ),
+    ProductModel(
+      id: '005',
+      title: 'Redmi 12C',
+      stock: 10,
+      price: 179.99,
+      thumnail: 'assets/images/products/redmi_13c.png',
+      productType: 'variable',
+      brand: BrandModel(
+        id: '4',
+        image: '',
+        name: 'Xiaomi',
+        isFeatured: true,
+        productsCount: 50,
+      ),
+      categoryId: '6',
+      description: 'Xiaomi Redmi 13C Dual SIM 8GB Ram+256GB ROM (6.74 Inches) (4G)',
     ),
   ];
 /*
@@ -295,6 +334,13 @@ class XDummyData {
       name: 'Furniture',
       image: XImages.furniture,
       isFeatured: true,
+    ),
+    CategoryModel(
+      id: '9',
+      name: 'T-Shirts',
+      image: XImages.clothes,
+      isFeatured: true,
+      parentId: '1',
     ),
   ];
 }
