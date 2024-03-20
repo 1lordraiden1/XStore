@@ -1,9 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:xstore/common/widgets/appbar/appbar.dart';
-import 'package:xstore/common/widgets/icons/circular_icon.dart';
 import 'package:xstore/common/widgets/products/favorite_icon/favorite_icon.dart';
 import 'package:xstore/common/widgets/shapes/curved_edges/curved_edges_widget.dart';
 import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';

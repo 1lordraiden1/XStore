@@ -153,11 +153,11 @@ class ProductRepo extends GetxController {
       final querySnapshot = limit == -1
           ? await _db
               .collection('Products')
-              .where('Brand.id', isEqualTo: brandId)
+              .where('Brand.Id', isEqualTo: brandId)
               .get()
           : await _db
               .collection('Products')
-              .where('Brand.id', isEqualTo: brandId)
+              .where('Brand.Id', isEqualTo: brandId)
               .limit(limit)
               .get();
 
@@ -167,7 +167,7 @@ class ProductRepo extends GetxController {
 
       return products;
     } catch (e) {
-      throw 'Something went wrong. Please try again';
+      throw 'Something went wrong. Getting Products For Brands';
     }
   }
 
@@ -188,7 +188,7 @@ class ProductRepo extends GetxController {
               .get();
 
       List<String> productIds =
-          querySnapshot.docs.map((e) => e['productId'] as String).toList();
+          querySnapshot.docs.map((e) => e['productId'] as String).toList(); // as String 
 
       final productsQuery = await _db
           .collection('Products')

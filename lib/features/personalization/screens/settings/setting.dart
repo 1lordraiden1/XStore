@@ -127,7 +127,7 @@ class SettingScreen extends StatelessWidget {
                     subtitle: "Set image quality",
                     trailing: Switch(value: true, onChanged: (value) {}),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: XSizes.spaceBtwSections,
                   ),
                   SizedBox(

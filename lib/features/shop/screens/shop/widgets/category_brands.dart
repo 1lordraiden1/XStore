@@ -44,7 +44,7 @@ class CategoryBrands extends StatelessWidget {
               final brand = brands[index];
               return FutureBuilder(
                 future:
-                    controller.getBrandProducts(brandId: brand.id, limit: 3),
+                    controller.getBrandProducts(brand.id),
                 builder: (context, snapshot) {
                   final widget = XCloudHelperFunctions.checkMultiRecordState(
                     snapshot: snapshot,

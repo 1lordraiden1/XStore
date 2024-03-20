@@ -13,6 +13,7 @@ import 'package:xstore/features/shop/controllers/product/brand_controller.dart';
 import 'package:xstore/features/shop/screens/all_products/all_brands.dart';
 import 'package:xstore/features/shop/screens/all_products/brand_products.dart';
 import 'package:xstore/features/shop/screens/home/widgets/cart_count.dart';
+import 'package:xstore/features/shop/screens/search/search_screen.dart';
 import 'package:xstore/features/shop/screens/shop/widgets/category_tab.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/sizes.dart';
@@ -59,9 +60,10 @@ class ShopScreen extends StatelessWidget {
                       const SizedBox(
                         height: XSizes.spaceBtwItems,
                       ),
-                      const XSearchContainer(
+                       XSearchContainer(
                         text: "Search here",
                         icon: Iconsax.search_normal,
+                        onTap: ()=> Get.to(()=> const SearchScreen()),
                       ),
                       const SizedBox(
                         height: XSizes.spaceBtwSections,

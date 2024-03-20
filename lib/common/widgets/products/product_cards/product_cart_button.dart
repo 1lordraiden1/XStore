@@ -35,7 +35,7 @@ class ProductAddToCartButton extends StatelessWidget {
           return Container(
             decoration: BoxDecoration(
               color: productQuantity > 0 ? XColors.primary : XColors.dark,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(XSizes.cardRadiusMd),
                 bottomRight: Radius.circular(
                   XSizes.productImageRadius,

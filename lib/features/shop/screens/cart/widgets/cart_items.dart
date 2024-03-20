@@ -35,7 +35,7 @@ class XCartItems extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 65,
                         ),
                         XProductQuantityWithAddRemove(

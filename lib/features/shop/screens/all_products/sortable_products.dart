@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:xstore/common/widgets/grid/grid_layout.dart';
 import 'package:xstore/common/widgets/products/product_cards/product_card_vertical.dart';

@@ -4,7 +4,6 @@ import 'package:xstore/common/shimmer/category_shimmer.dart';
 import 'package:xstore/common/widgets/image_text/vertical_image_text.dart';
 import 'package:xstore/features/shop/controllers/category_contoller.dart';
 import 'package:xstore/features/shop/screens/shop/widgets/sup_categories.dart';
-import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
 class XHomeCategories extends StatelessWidget {

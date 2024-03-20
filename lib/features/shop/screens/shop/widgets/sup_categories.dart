@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:xstore/common/shimmer/brands_shimmer.dart';
 import 'package:xstore/common/widgets/appbar/appbar.dart';
@@ -8,9 +7,7 @@ import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/features/shop/controllers/category_contoller.dart';
 import 'package:xstore/features/shop/models/category_model.dart';
-import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/features/shop/screens/all_products/all_products.dart';
-import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 import 'package:xstore/utils/helpers/cloud_helper_functions.dart';
 

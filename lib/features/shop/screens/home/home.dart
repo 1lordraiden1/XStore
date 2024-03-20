@@ -8,7 +8,6 @@ import 'package:xstore/common/widgets/shapes/containers/primary_header_container
 import 'package:xstore/common/widgets/shapes/containers/search_container.dart';
 import 'package:xstore/common/widgets/texts/text_heading.dart';
 import 'package:xstore/features/shop/controllers/product/product_controller.dart';
-import 'package:xstore/features/shop/controllers/search_controller.dart';
 import 'package:xstore/features/shop/screens/all_products/all_products.dart';
 import 'package:xstore/features/shop/screens/search/search_screen.dart';
 import 'package:xstore/utils/constants/colors.dart';
@@ -24,7 +23,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ProductController());
-    final searchController = Get.put(XSearchController());
+    
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -33,9 +32,9 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   // AppBar
-                  XHomeAppBarWidget(),
+                  const XHomeAppBarWidget(),
 
-                  SizedBox(
+                  const SizedBox(
                     height: XSizes.spaceBtwSections,
                   ),
 
@@ -45,19 +44,19 @@ class HomeScreen extends StatelessWidget {
                     text: "Search here",
                     icon: Iconsax.search_normal,
                     onTap: () => Get.to(
-                      () => Hero(
-                        child: const SearchScreen(),
+                      () => const Hero(
                         tag: 'search',
+                        child: SearchScreen(),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: XSizes.spaceBtwSections,
                   ),
 
                   // Catgs Header // isSearching
 
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: XSizes.defaultSpace),
                     child: Column(
                       children: [

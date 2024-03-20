@@ -33,7 +33,7 @@ class BrandProducts extends StatelessWidget {
                 height: XSizes.spaceBtwItems,
               ),
               FutureBuilder(
-                future: brandController.getBrandProducts(brandId: brand.id),
+                future: brandController.getBrandProducts(brand.id),
                 builder: (context, snapshot) {
                   const loader = XVerticalProductShimmer();
                   final widget = XCloudHelperFunctions.checkMultiRecordState(snapshot: snapshot,loader: loader);

@@ -37,7 +37,7 @@ class BrandRepo extends GetxController {
           .get();
 
       // Extract brandIds from documents
-      List<String> brandIds = brandCategoryQuery.docs.map((doc) => doc['brandId'] as String ).toList();
+      List<String> brandIds = brandCategoryQuery.docs.map((doc) => doc['brandId'].toString() ).toList(); // as String
 
       // Query to get all docs where brandId is in the brandIds
       final brandQuery = await _db.collection('Brands').where(FieldPath.documentId, whereIn: brandIds).limit(2).get();

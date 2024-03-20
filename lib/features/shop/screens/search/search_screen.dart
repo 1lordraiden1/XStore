@@ -44,7 +44,7 @@ class SearchScreen extends StatelessWidget {
                   itemBuilder: (_, index) => XProductCardHorizontal(
                     product: searchController.display_list[index],
                   )
-                )  : Center(child: Text("Not Found"),),
+                )  : const Center(child: Text("Not Found"),),
               ),
             ],
           ),
