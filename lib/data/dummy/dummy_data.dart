@@ -37,6 +37,7 @@ class XDummyData {
   ];
 
   static final List<ProductModel> products = [
+    
     ProductModel(
       id: '001',
       title: 'Google White T-Shirt',
@@ -98,7 +99,6 @@ class XDummyData {
         ),
       ],
       date: DateTime.now(),
-      images: ['', ''],
     ),
     ProductModel(
       id: '002',
@@ -139,7 +139,6 @@ class XDummyData {
         ),
       ],
       date: DateTime.now(),
-      images: ['', ''],
     ),
     ProductModel(
       id: '003',
@@ -180,7 +179,6 @@ class XDummyData {
         ),
       ],
       date: DateTime.now(),
-      images: ['', ''],
     ),
     ProductModel(
       id: '004',
@@ -225,11 +223,8 @@ class XDummyData {
         ),
       ],
       date: DateTime.now(),
-      images: [
-        '',
-        '',
-      ],
     ),
+    
     ProductModel(
       id: '005',
       title: 'Redmi 12C',
@@ -239,7 +234,7 @@ class XDummyData {
       productType: 'variable',
       brand: BrandModel(
         id: '4',
-        image: '',
+        image: 'assets/icons/brands/xiaomi.png',
         name: 'Xiaomi',
         isFeatured: true,
         productsCount: 50,
@@ -251,8 +246,8 @@ class XDummyData {
       salePrice: 10.0,
       sku: 'XR13C',
       images: [
-        '',
-        '',
+        'assets/images/products/redmi_13c_1.png',
+        'assets/images/products/redmi_13c_2.png',
       ],
       productAttributes: [
         ProductAttributesModel(
@@ -266,7 +261,7 @@ class XDummyData {
           stock: 10,
           price: 179.99,
           salePrice: 10.0,
-          image: '',
+          image: 'assets/images/products/redmi_13c_1.png',
           attributesValues: {
             'Color': 'Black',
           },
@@ -288,14 +283,17 @@ class XDummyData {
           'Samsung Galaxy A15 Dual SIM 6GB Ram+128GB ROM (6.5 Inches) (4G LTE) (Light Blue)',
       brand: BrandModel(
         id: '5',
-        image: '',
+        image: 'assets/icons/brands/samsung.png',
         name: 'Samsung',
         isFeatured: true,
         productsCount: 50,
       ),
       categoryId: '6',
       date: DateTime.now(),
-      images: ['assets/images/products/sga15w.png', 'assets/images/products/sga15b.png'],
+      images: [
+        'assets/images/products/sga15w.png',
+        'assets/images/products/sga15b.png'
+      ],
       isFeatured: true,
       salePrice: 20.0,
       sku: 'SGA15W',
@@ -319,7 +317,7 @@ class XDummyData {
               'Samsung Galaxy A15 Dual SIM 6GB Ram+128GB ROM (6.5 Inches) (4G LTE) (Light Blue)',
           sku: 'SGA15W',
         ),
-         ProductVariationsModel(
+        ProductVariationsModel(
           id: '2',
           stock: 10,
           price: 189.99,
@@ -331,11 +329,8 @@ class XDummyData {
           description:
               'Samsung Galaxy A15 Dual SIM 6GB Ram+128GB ROM (6.5 Inches) (4G LTE) (Black)',
           sku: 'SGA15B',
-
         ),
-
       ],
-
     ),
   ];
 

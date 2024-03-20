@@ -39,13 +39,15 @@ class XCartCountWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
             ),
             child: Center(
-              child: Text(
-                controller.cartItems.length.toString(),
-                style: Theme.of(context).textTheme.labelLarge!.apply(
-                      color: counterTextColor ??
-                          (dark ? XColors.black : XColors.white),
-                      fontSizeFactor: 0.7,
-                    ),
+              child: Obx(
+                () => Text(
+                  controller.noOfCartItems.value.toString(),
+                  style: Theme.of(context).textTheme.labelLarge!.apply(
+                        color: counterTextColor ??
+                            (dark ? XColors.black : XColors.white),
+                        fontSizeFactor: 0.7,
+                      ),
+                ),
               ),
             ),
           ),

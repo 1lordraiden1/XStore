@@ -3,42 +3,52 @@ import 'package:iconsax/iconsax.dart';
 import 'package:xstore/common/widgets/icons/circular_icon.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/sizes.dart';
+import 'package:xstore/utils/helpers/helper_functions.dart';
 
-class XProductQuantitiyWithAddRemove extends StatelessWidget {
-  const XProductQuantitiyWithAddRemove({
+class XProductQuantityWithAddRemove extends StatelessWidget {
+  const XProductQuantityWithAddRemove({
     super.key,
+    required this.quantity,
+    this.add,
+    this.remove,
   });
+
+  final int quantity;
+  final VoidCallback? add, remove;
 
   @override
   Widget build(BuildContext context) {
+    final dark = XHelperFunctions.isDarkMode(context);
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const XCircularIcon(
+        XCircularIcon(
           size: 15,
           icon: Iconsax.minus,
-          backgroundColor: XColors.darkGrey,
+          backgroundColor: dark ? XColors.darkenGrey : XColors.light,
           width: 30,
           height: 30,
-          color: XColors.white,
+          color: dark ? XColors.white : XColors.black,
+          onPressed: remove,
         ),
         const SizedBox(
           width: XSizes.spaceBtwItems,
         ),
         Text(
-          "1",
+          quantity.toString(),
           style: Theme.of(context).textTheme.titleSmall,
         ),
         const SizedBox(
           width: XSizes.spaceBtwItems,
         ),
-        const XCircularIcon(
+        XCircularIcon(
           size: 15,
           icon: Iconsax.add,
           backgroundColor: XColors.primary,
           width: 30,
           height: 30,
           color: XColors.white,
+          onPressed: add,
         ),
       ],
     );

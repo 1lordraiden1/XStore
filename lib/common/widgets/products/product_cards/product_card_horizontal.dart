@@ -12,7 +12,6 @@ import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/features/shop/screens/product_details/prodcut_detail.dart';
 import 'package:xstore/utils/constants/colors.dart';
 import 'package:xstore/utils/constants/enums.dart';
-import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 import 'package:xstore/utils/helpers/helper_functions.dart';
 
@@ -37,14 +36,15 @@ class XProductCardHorizontal extends StatelessWidget {
         ),
       ),
       child: Container(
-        width: 310,
-        //height: 200,
+        width: double.infinity,
+        height: 120,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(XSizes.productImageRadius),
           color: dark ? XColors.darkenGrey : XColors.softGrey,
         ),
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             // Thumbnail
             XRoundedContainer(
@@ -102,32 +102,118 @@ class XProductCardHorizontal extends StatelessWidget {
             //const Spacer(),
 
             // price row =>
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
+           
+            Expanded(
+              child: SizedBox(
+                width: double.infinity,
+                //height: 200,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: XSizes.sm, left: XSizes.sm),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (product.productType ==
-                              ProductType.single.toString() &&
-                          product.salePrice > 0)
-                        Padding(
-                          padding: const EdgeInsets.only(left: XSizes.sm),
-                          child: Text(
-                            product.price.toString(),
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelMedium!
-                                .apply(decoration: TextDecoration.lineThrough),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        
+                        children: [
+                          XProductTitleText(
+                            title: product.title,
+                            smallSize: true,
                           ),
-                        ),
+                          const SizedBox(
+                            height: XSizes.spaceBtwItems / 2,
+                          ),
+                          XBrandTitleVerfiedIcon(
+                            title: product.brand!.name,
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          if (product.productType ==
+                            ProductType.single.toString() &&
+                        product.salePrice > 0)
                       Padding(
                         padding: const EdgeInsets.only(left: XSizes.sm),
-                        child: XProductPrice(
-                            price: controller.getProductPrice(product)),
+                        child: Text(
+                          product.price.toString(),
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelMedium!
+                              .apply(decoration: TextDecoration.lineThrough),
+                        ),
+                      ),
+                      Padding(
+                      padding: const EdgeInsets.only(left: XSizes.sm),
+                      child: XProductPrice(
+                          price: controller.getProductPrice(product)),
+                    ),
+                         
+                          Container(
+                            decoration: const BoxDecoration(
+                              color: XColors.dark,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(XSizes.cardRadiusMd),
+                                bottomRight: Radius.circular(
+                                  XSizes.productImageRadius,
+                                ),
+                              ),
+                            ),
+                            child: const SizedBox(
+                              width: XSizes.iconLg * 1.2,
+                              height: XSizes.iconLg * 1.2,
+                              child: Center(
+                                child: Icon(
+                                  Iconsax.add,
+                                  color: XColors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/*
+ Row(
+              
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Column(
+
+                  children: [
+                    if (product.productType ==
+                            ProductType.single.toString() &&
+                        product.salePrice > 0)
+                      Padding(
+                        padding: const EdgeInsets.only(left: XSizes.sm),
+                        child: Text(
+                          product.price.toString(),
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelMedium!
+                              .apply(decoration: TextDecoration.lineThrough),
+                        ),
+                      ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: XSizes.sm),
+                      child: XProductPrice(
+                          price: controller.getProductPrice(product)),
+                    ),
+                  ],
                 ),
                 Container(
                   decoration: const BoxDecoration(
@@ -153,65 +239,4 @@ class XProductCardHorizontal extends StatelessWidget {
               ],
             ),
 
-            SizedBox(
-              width: 172,
-              //height: 200,
-              child: Padding(
-                padding: const EdgeInsets.only(top: XSizes.sm, left: XSizes.sm),
-                child: Column(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        XProductTitleText(
-                          title: product.title,
-                          smallSize: true,
-                        ),
-                        const SizedBox(
-                          height: XSizes.spaceBtwItems / 2,
-                        ),
-                        XBrandTitleVerfiedIcon(
-                          title: product.brand!.name,
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Flexible(
-                          child: XProductPrice(price: "189.99"),
-                        ),
-                        Container(
-                          decoration: const BoxDecoration(
-                            color: XColors.dark,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(XSizes.cardRadiusMd),
-                              bottomRight: Radius.circular(
-                                XSizes.productImageRadius,
-                              ),
-                            ),
-                          ),
-                          child: const SizedBox(
-                            width: XSizes.iconLg * 1.2,
-                            height: XSizes.iconLg * 1.2,
-                            child: Center(
-                              child: Icon(
-                                Iconsax.add,
-                                color: XColors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+ */

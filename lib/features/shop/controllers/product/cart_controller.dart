@@ -1,9 +1,9 @@
-
 import 'package:get/get.dart';
 import 'package:xstore/common/widgets/loaders/loaders.dart';
 import 'package:xstore/features/shop/controllers/product/variation_controller.dart';
 import 'package:xstore/features/shop/models/cart_item_model.dart';
 import 'package:xstore/features/shop/models/product_model.dart';
+import 'package:xstore/features/shop/screens/cart/cart.dart';
 import 'package:xstore/utils/constants/enums.dart';
 import 'package:xstore/utils/local_storage/storage_utility.dart';
 
@@ -15,6 +15,10 @@ class CartController extends GetxController {
   RxInt productQuantityInCart = 0.obs;
   RxList<CartItemModel> cartItems = <CartItemModel>[].obs;
   final variationController = VariationController.instance;
+
+  CartController() {
+    loadCartItems();
+  }
 
   void addToCart(ProductModel product) {
     // Quantity check
@@ -66,6 +70,65 @@ class CartController extends GetxController {
 
     XLoaders.successSnackBar(
         title: 'Great!', message: 'Your Product has been added to the cart');
+  }
+
+  void addOneToCart(CartItemModel item) {
+    int index = cartItems.indexWhere((element) =>
+        element.productId == item.productId &&
+        element.variationId == item.variationId);
+    if (index >= 0) {
+      cartItems[index].quantity += 1;
+    } else {
+      cartItems.add(item);
+    }
+    updateCart();
+  }
+
+  void removeOneFromCart(CartItemModel item) {
+    int index = cartItems.indexWhere((element) =>
+        element.productId == item.productId &&
+        element.variationId == item.variationId);
+    if (index >= 0) {
+      if (cartItems[index].quantity > 1) {
+        cartItems[index].quantity -= 1;
+      } else {
+        cartItems[index].quantity == 1
+            ? removeFromCartDialog(index)
+            : cartItems.removeAt(index);
+      }
+    }
+    updateCart();
+  }
+
+  void removeFromCartDialog(int index) {
+    Get.defaultDialog(
+      title: 'Remove Product',
+      middleText: 'Are you sure you want to remove this product ?',
+      onConfirm: () {
+        // Remove the item
+        cartItems.removeAt(index);
+        updateCart();
+        XLoaders.successSnackBar(
+            title: "Done", message: 'Product removed from cart');
+            Get.off(() => const CartScreen());
+         //Get.back();
+      },
+      onCancel: () => () => Get.back(),
+    );
+  }
+
+  void updateAlreadyAddedProductCount(ProductModel product) {
+    if (product.productType == ProductType.single.toString()) {
+      productQuantityInCart.value = getProductQuantityInCart(product.id);
+    } else {
+      final variationId = variationController.selectedVariation.value.id;
+      if (variationId.isNotEmpty) {
+        productQuantityInCart.value =
+            getVariationQuantityInCart(product.id, variationId);
+      } else {
+        productQuantityInCart.value = 0;
+      }
+    }
   }
 
   CartItemModel convertToCartItem(ProductModel product, int quantity) {
@@ -145,11 +208,11 @@ class CartController extends GetxController {
   }
 
   int getVariationQuantityInCart(String productId, String variationId) {
-    final foundItem = cartItems
-        .firstWhere(
-          (e) => e.productId == productId && e.variationId == variationId, orElse: () => CartItemModel.empty(),
-        );
-        
+    final foundItem = cartItems.firstWhere(
+      (e) => e.productId == productId && e.variationId == variationId,
+      orElse: () => CartItemModel.empty(),
+    );
+
     return foundItem.quantity;
   }
 

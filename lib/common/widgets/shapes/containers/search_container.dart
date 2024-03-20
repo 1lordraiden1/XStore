@@ -23,13 +23,14 @@ class XSearchContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     final dark = XHelperFunctions.isDarkMode(context);
     return GestureDetector(
       onTap: onTap,
       child: Padding(
         padding: padding!,
         child: Container(
-          height: 40,
+          height: 60,
           width: XDeviceUtils.getScreenWidth(context),
           padding: const EdgeInsets.symmetric(
             horizontal: XSizes.md,
@@ -69,3 +70,43 @@ class XSearchContainer extends StatelessWidget {
     );
   }
 }
+
+/*
+Container(
+          height: 40,
+          width: XDeviceUtils.getScreenWidth(context),
+          padding: const EdgeInsets.symmetric(
+            horizontal: XSizes.md,
+          ),
+          decoration: BoxDecoration(
+            color: showBackground
+                ? dark
+                    ? XColors.dark
+                    : XColors.light
+                : Colors.transparent,
+            border: showBorder
+                ? Border.all(
+                    color: XColors.grey,
+                  )
+                : null,
+            borderRadius: BorderRadius.circular(XSizes.cardRadiusLg),
+          ),
+          child:
+Row(
+            children: [
+              Icon(
+                icon,
+                color: XColors.darkGrey,
+              ),
+              const SizedBox(
+                width: XSizes.spaceBtwItems,
+              ),
+              Text(
+                text,
+                style: Theme.of(context).textTheme.bodySmall!.apply(
+                      color: XColors.darkGrey,
+                    ),
+              ),
+            ],
+          ),
+ */

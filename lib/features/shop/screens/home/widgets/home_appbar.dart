@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:xstore/common/shimmer/shimmer_effect.dart';
 import 'package:xstore/common/widgets/appbar/appbar.dart';
 import 'package:xstore/features/personalization/controllers/user_controller.dart';
@@ -16,7 +15,7 @@ class XHomeAppBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(UserController());
 
-    // final user = Get.put(UserModel.fromSnapshot(controller.instance.userRepo.))
+    
     return XAppBar(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

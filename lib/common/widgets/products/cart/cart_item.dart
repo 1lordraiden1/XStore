@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:xstore/common/widgets/icons/brand_title_icon.dart';
 import 'package:xstore/common/widgets/shapes/image_frame/rounded_image.dart';
 import 'package:xstore/common/widgets/texts/product_text_title.dart';
+import 'package:xstore/features/shop/models/cart_item_model.dart';
 import 'package:xstore/utils/constants/colors.dart';
-import 'package:xstore/utils/constants/image_strings.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 import 'package:xstore/utils/helpers/helper_functions.dart';
 
 class XCartItem extends StatelessWidget {
   const XCartItem({
     super.key,
+    required this.item,
   });
+
+  final CartItemModel item;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,8 @@ class XCartItem extends StatelessWidget {
       children: [
         // Image
         XRoundedImage(
-          imageUrl: XImages.google,
+          imageUrl: item.image ?? '',
+          isNetworkImage: true,
           width: 60,
           height: 60,
           padding: const EdgeInsets.all(XSizes.md),
@@ -34,33 +38,30 @@ class XCartItem extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const XBrandTitleVerfiedIcon(title: "Google"),
-              const Flexible(
+              XBrandTitleVerfiedIcon(title: item.brandName ?? ''),
+              Flexible(
                 child: XProductTitleText(
-                  title: "T-Shirt White",
+                  title: item.title,
                   maxLines: 1,
                 ),
               ),
               Text.rich(
                 TextSpan(
-                  children: [
-                    TextSpan(
-                      text: "Color",
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                    TextSpan(
-                      text: "Green",
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    TextSpan(
-                      text: "Size",
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                    TextSpan(
-                      text: "UK 08",
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ],
+                  children: (item.selectedVariation ?? {})
+                      .entries
+                      .map(
+                        (e) => TextSpan(children: [
+                          TextSpan(
+                            text: ' ${e.key} ',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                          TextSpan(
+                            text: ' ${e.value} ',
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                        ]),
+                      )
+                      .toList(),
                 ),
               ),
             ],

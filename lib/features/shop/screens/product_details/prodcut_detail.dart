@@ -5,7 +5,6 @@ import 'package:xstore/features/shop/models/product_model.dart';
 import 'package:xstore/features/shop/screens/product_details/widgets/bottom_add_to_cart.dart';
 import 'package:xstore/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:xstore/features/shop/screens/product_details/widgets/product_meta_data.dart';
-import 'package:xstore/utils/constants/enums.dart';
 import 'package:xstore/utils/constants/sizes.dart';
 
 import 'widgets/product_image_slider.dart';
@@ -18,7 +17,9 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const XBottomAddToCart(),
+      bottomNavigationBar: XBottomAddToCart(
+        product: product,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -46,15 +47,15 @@ class ProductDetailScreen extends StatelessWidget {
                     product: product,
                   ),
 
-                  if (product.productType == ProductType.variable.toString())
-                    XProductAttributes(
-                      product: product,
-                    ),
+                  //if (product.productType == ProductType.variable.toString())
+                  XProductAttributes(
+                    product: product,
+                  ),
 
-                  if (product.productType == ProductType.variable.toString())
-                    const SizedBox(
-                      height: XSizes.spaceBtwSections,
-                    ),
+                  //if (product.productType == ProductType.variable.toString())
+                  const SizedBox(
+                    height: XSizes.spaceBtwSections,
+                  ),
 
                   SizedBox(
                     width: double.infinity,
@@ -78,11 +79,11 @@ class ProductDetailScreen extends StatelessWidget {
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' Show more',
                     trimExpandedText: ' Less',
-                    moreStyle: TextStyle(
+                    moreStyle: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w800,
                     ),
-                    lessStyle: TextStyle(
+                    lessStyle: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w800,
                     ),
