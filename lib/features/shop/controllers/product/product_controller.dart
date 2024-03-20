@@ -9,7 +9,7 @@ class ProductController extends GetxController {
 
   @override
   void onInit() {
-    //fetchAllProducts();
+    fetchAllProducts();
     fetchFeaturedProducts();
     super.onInit();
   }
@@ -25,6 +25,9 @@ class ProductController extends GetxController {
     
       final products = await _productRepo.getAllFeaturedProducts();
 
+      allProducts.assignAll(products);
+
+
       // Update the products list
       return products;
 
@@ -34,6 +37,36 @@ class ProductController extends GetxController {
       return [];
     } 
   }
+
+  Future<void> fetchAllProducts() async {
+    try {
+      // Show loader
+      isLoading.value = true;
+
+      // Fetch Products
+      final products = await _productRepo.getAllFeaturedProducts();
+
+      // Update the products list
+      allProducts.assignAll(products);
+
+      // Filter featured products
+      /*
+      featuredProducts.assignAll(
+        products
+            .where(
+              (product) => product.isFeatured! && product.id.isEmpty,
+            )
+            .take(4)
+            .toList(),
+      );*/
+    } catch (e) {
+      XLoaders.errorSnackBar(title: "Oh no!", message: e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  
 
   
   Future<void> fetchFeaturedProducts() async {

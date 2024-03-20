@@ -135,21 +135,25 @@ class XProductCardHorizontal extends StatelessWidget {
                           if (product.productType ==
                             ProductType.single.toString() &&
                         product.salePrice > 0)
-                      Padding(
-                        padding: const EdgeInsets.only(left: XSizes.sm),
-                        child: Text(
-                          product.price.toString(),
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelMedium!
-                              .apply(decoration: TextDecoration.lineThrough),
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: XSizes.sm),
+                          child: Text(
+                            product.price.toString(),
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium!
+                                .apply(decoration: TextDecoration.lineThrough),
+                          ),
                         ),
                       ),
-                      Padding(
-                      padding: const EdgeInsets.only(left: XSizes.sm),
-                      child: XProductPrice(
-                          price: controller.getProductPrice(product)),
-                    ),
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: XSizes.sm),
+                          child: XProductPrice(
+                            price: controller.getProductPrice(product)),
+                        ),
+                      ),
                          
                           Container(
                             decoration: const BoxDecoration(
